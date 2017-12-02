@@ -31,4 +31,4 @@ Dans le CDC de base:
 - [X] Partie proprement dite jusqu'à perte d'un des 2 joueurs (ou match nul, exceptionnel)
 - [X] Le programme impose le respect des règles, détecte la fin de partie, ne plante pas
 - [ ] Les cartes disent ce qu'elles font et font ce qu'elles disent (descriptions consultables)
-- [ ] Attribution de la carte enjeu du perdant à la collection du gagnant
+- [x] Attribution de la carte enjeu du perdant à la collection du gagnant
