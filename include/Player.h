@@ -40,7 +40,8 @@ class Player
         Player(std::istream& fichier, std::map<int, ModeleCarte *> modeles);
         virtual ~Player();
 
-        void NewGame() { m_Collection.CreateDeck(m_Deck); }
+        /** met le joueur en place pour une nouvelle partie (battre le deck et placer l'enjeu) */
+        void NewGame();
 
         /** dessine un demi écran pour le joueur en cours.
         turn est vraie si c'est au tour de ce joueur */
@@ -58,8 +59,11 @@ class Player
         /** Pour recevoir des degats */
         void TakeDamage(int quant);
 
-        /** prend une carte du deck/collection et la met dans l'enjeu */
-        ///void PlaceEnjeu();
+        /** perd l'enjeu et le renvoie */
+        Carte *LoseEnjeu();
+
+        /** le gain de l'enjeu */
+        void WinGame(Player& loser);
 
         /** Sauvegarde le joueur (PAS LA PARTIE) */
         void WriteFile(std::ostream& fichier);
