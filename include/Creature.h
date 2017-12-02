@@ -10,22 +10,22 @@ class Creature : public Carte
     private:
 
     protected:
-        /* le modele de carte */
+        /** le modele de carte */
         ModeleCreature& m_Modele;
-        /* une copie de l'hp, est variable dans une partie */
+        /** une copie de l'hp, est variable dans une partie */
         int m_HP;
 
-        /* l'arsenal d'attaques de la carte */
+        /** l'arsenal d'attaques de la carte */
         Move m_Moves[MAXMOVES];
 
-        /* si cette carte devra attaquer au prochain tour */
+        /** si cette carte devra attaquer au prochain tour */
         bool m_Attack;
-        /* le numéro de la carte ennemie à attaquer. -1 si c'est directement le joueur */
+        /** le numéro de la carte ennemie à attaquer. -1 si c'est directement le joueur */
         int m_Cible;
-        /* quelle attaque utiliser */
+        /** quelle attaque utiliser */
         int m_AttackMove;
 
-        /* si la carte est stun, le nombre de tours restants (0 si pas stun) */
+        /** si la carte est stun, le nombre de tours restants (0 si pas stun) */
         int m_Frozen;
 
     public:
@@ -39,7 +39,7 @@ class Creature : public Carte
 
         ModeleCarte& GetModele() { return m_Modele; }
 
-        /* fait attaquer à la fin du tour */
+        /** fait attaquer à la fin du tour */
         virtual void SetAttack(int who, int _move);
         virtual int TakeDamage(int quant);
         virtual void EndTurn(Player& ally, Player& enemy);

@@ -20,7 +20,7 @@ Pow::~Pow()
 }
 
 
-void Pow::StartAction(Player& ally, Player& enemy)
+void Pow::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
     Creature *inter = nullptr;
 
@@ -32,7 +32,7 @@ void Pow::StartAction(Player& ally, Player& enemy)
     }
 }
 
-void Pow::EndAction(Player& ally, Player& enemy)
+void Pow::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
     //active cards will unfreeze themselves on their own
 }

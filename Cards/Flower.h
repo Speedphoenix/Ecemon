@@ -12,8 +12,8 @@ class Flower : public ModeleSpecial
         virtual ~Flower();
 
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // FLOWER_H

@@ -19,12 +19,12 @@ Star::~Star()
     //dtor
 }
 
-void Star::StartAction(Player& ally, Player& enemy)
+void Star::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void Star::EndAction(Player& ally, Player& enemy)
+void Star::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }

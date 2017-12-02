@@ -24,7 +24,7 @@ class Collection
 
         void WriteFile(std::ostream& fichier);
 
-        /* could throw an out of range exception if the file contains a number outside the range of the map */
+        /** could throw an out of range exception if the file contains a number outside the range of the map */
         void ReadFile(std::istream& fichier, std::map<int, ModeleCarte *> modeles); //pas oublier de vider le vecteur
 
         void Reset();

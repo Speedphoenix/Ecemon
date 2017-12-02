@@ -19,12 +19,12 @@ GreenShroom::~GreenShroom()
     //dtor
 }
 
-void GreenShroom::StartAction(Player& ally, Player& enemy)
+void GreenShroom::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void GreenShroom::EndAction(Player& ally, Player& enemy)
+void GreenShroom::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }

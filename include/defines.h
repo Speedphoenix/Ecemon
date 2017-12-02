@@ -51,6 +51,14 @@ enum CardType{
 #define CATTACK2 1
 #define CDESCRI 2
 
+// enum pour les modèles de cartes speciales
+#define GREENSHROOM 8
+#define REDSHROOM 1
+#define FLOWER 4
+#define COIN 5
+#define STAR 6
+#define POW 7
+
 struct PlayerInput{
     bool whoTurn; //n'a rien à voir avec l'input, main un bon endroit pour la mettre
 

@@ -11,8 +11,8 @@ class Star : public ModeleSpecial
         Star(int cardNum, std::istream& fichier);
         virtual ~Star();
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // STAR_H

@@ -9,10 +9,10 @@ class ModeleEnergie : public ModeleCarte
     private:
 
     protected:
-        /* à quel domaine cette carte appartient */
+        /** à quel domaine cette carte appartient */
         int m_Domaine;
 
-        /* la quantité d'énergie de cette carte*/
+        /** la quantité d'énergie de cette carte*/
         int m_Energy;
 
     public:
@@ -20,10 +20,10 @@ class ModeleEnergie : public ModeleCarte
         ModeleEnergie(int cardNum, std::istream& fichier);
         virtual ~ModeleEnergie();
 
-        /* écrit la carte dans un fichier. Ne servira à priori jamais */
+        /** écrit la carte dans un fichier. Ne servira à priori jamais */
         virtual void Write_file(std::ostream& fichier);
 
-        /* lit la carte dans un fichier
+        /** lit la carte dans un fichier
         ON ASSUME QUE LE NUMÉRO DE LA CARTE A DÉJÀ ÉTÉ LU!!!*/
         virtual void Read_file(std::istream& fichier);
 

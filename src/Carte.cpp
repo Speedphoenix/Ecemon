@@ -61,6 +61,8 @@ void Carte::Detail(BITMAP *fond, PlayerInput& p_input, const Sprites& sprites)
 
         draw_sprite(buffer, sprites.souris, mouse_x, mouse_y);
         blit(buffer, screen,0,0, 0, 0, XSCREEN, YSCREEN);
+
+        rest(20);
     }
 
     destroy_bitmap(buffer);

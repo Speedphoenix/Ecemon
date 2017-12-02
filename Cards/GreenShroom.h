@@ -11,8 +11,8 @@ class GreenShroom : public ModeleSpecial
         GreenShroom(int cardNum, std::istream& fichier);
         virtual ~GreenShroom();
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // GREENSHROOM_H

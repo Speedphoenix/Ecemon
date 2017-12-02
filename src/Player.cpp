@@ -115,6 +115,73 @@ void Player::ReadFile(istream& fichier, map<int, ModeleCarte *> modeles)
 }
 
 
+void Player::TakeDamage(int quant)
+{
+    m_HP -= quant;
+
+    if (m_HP<0)
+        m_HP = 0;
+}
+
+void Player::Reset()
+{
+    m_HP = m_MaxHP;
+
+    //on vide tout. les pointeurs sont conservés dans la colléction
+    while (!m_Deck.empty())
+        m_Deck.pop();
+
+    while (!m_Cimetiere.empty())
+        m_Cimetiere.pop();
+
+    m_Main.clear();
+
+    m_Enjeu = nullptr;
+
+    for (int i=0;i<MAXSPECIAL;i++)
+        m_Special[i] = nullptr;
+
+    for (int i=0;i<MAXACTIVE;i++)
+        m_Active[i] = nullptr;
+
+    while (!m_Energie.empty())
+        m_Energie.pop();
+
+    for (int i=0;i<NBDOMAINE;i++)
+    {
+        m_CurrentEnergy.value[i] = 0; //pourrait être changeable si peach pour le royaume champi par exemple
+    }
+
+    m_Collection.Reset();
+}
+
+bool Player::GetDead()
+{
+    if (m_HP<=0)
+        return true;
+
+    if (!m_Main.empty())
+        return false;
+    if (!m_Deck.empty())
+        return false;
+
+    for (int i=0;i<MAXACTIVE;i++)
+    {
+        if (m_Active[i])
+            return false;
+    }
+
+    for (int i=0;i<MAXSPECIAL;i++)
+    {
+        if (m_Special[i])
+            return false;
+    }
+
+    return true;
+}
+
+
+
 void Player::EndTurn(Player& enemy)
 {
     //update de toutes les cartes
@@ -173,6 +240,54 @@ void Player::StartTurn(Player& enemy)
             }
         }
     }
+}
+
+//en dessous de ce point les fonctions servent à la fonction Turn ou en dessous uniquement
+
+void Player::ShowDescription(Player& opponent, BITMAP *fond, const Sprites& sprites, PlayerInput& p_input)
+{
+    Carte *inter = nullptr;
+    switch (p_input.endType)
+    {
+        case PENERGY: //existence PAS déjà blindée
+        if (p_input.endSide)
+        {
+            if (!m_Energie.empty())
+                inter = m_Energie.top();
+        }
+        else
+            inter = opponent.GetEnergie();
+    break;
+
+        case PCIMETIERE: //existence PAS déjà blindée
+        if (p_input.endSide)
+        {
+            if (!m_Cimetiere.empty())
+                inter = m_Cimetiere.top();
+        }
+        else
+            inter = opponent.GetCimetiere();
+    break;
+
+        case PACTIVE: //existence déjà blindée
+        inter = p_input.endSide ? m_Active[p_input.endNum] : opponent.GetActive(p_input.endNum);
+    break;
+
+        case PSPECIAL: //existence déjà blindée
+        inter = p_input.endSide ? m_Special[p_input.endNum] : opponent.GetSpecial(p_input.endNum);
+    break;
+
+        case PMAIN: //existence déjà blindée
+        inter = m_Main.at(p_input.endNum);
+    break;
+
+        default: //n'arrivera à priori jamais
+        inter = nullptr;
+    break;
+    }
+
+    if (inter)
+        inter->Detail(fond, p_input, sprites); //on appelle la fonction qui montre les détails de la carte
 }
 
 int CardButtonCheck(int x, int y, int precision)
@@ -304,25 +419,19 @@ bool Player::InputCheck(PlayerInput& p_input, Player& opponent)
             int choiceType, choiceNum;
             if (ChoiceCheck(choiceType, choiceNum, p_input.startSide, p_input.startCWhere)) //blindage QUE pour les cartes qui existent
             {
-
                 bool couldClick = false;
-
                 switch (choiceType)
                 {
-                    case PENERGY:
-                    case PENJEU:
-                    case PPIOCHE:
-                    case PCIMETIERE:
-                    case PPLAYER:
+                    default: //PENERGY, PENJEU, PPIOCHE, PCIMETIERE, PPLAYER
                     couldClick = true;
+                break;
+
+                    case PACTIVE:
+                    couldClick = (bool)(p_input.startSide ? m_Active[choiceNum] : opponent.GetActive(choiceNum));
                 break;
 
                     case PSPECIAL:
                     couldClick = (bool)(p_input.startSide ? m_Special[choiceNum] : opponent.GetSpecial(choiceNum));
-                    break;
-
-                    case PACTIVE:
-                    couldClick = (bool)(p_input.startSide ? m_Active[choiceNum] : opponent.GetActive(choiceNum));
                 break;
 
                     case PMAIN:
@@ -330,7 +439,6 @@ bool Player::InputCheck(PlayerInput& p_input, Player& opponent)
                         couldClick = true;
                 break;
                 }
-
                 if (couldClick)
                 {
                     p_input.startType = choiceType;
@@ -348,17 +456,14 @@ bool Player::InputCheck(PlayerInput& p_input, Player& opponent)
         if (p_input.dragging)
         {
             p_input.dragging = false;
-
             if (ChoiceCheck(p_input.endType, p_input.endNum, p_input.endSide, p_input.endCWhere)) // on blinde PAS les qui existent/n'existent pas
             {
                 rep = true;
 
                 p_input.endX = mouse_x;
                 p_input.endY = mouse_y;
-
             }
         }
-
         p_input.prevClick = false;
     }
     return rep;
@@ -376,7 +481,6 @@ bool Clicked(const PlayerInput& p_input)
 void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, PlayerInput& p_input)
 {
     bool endTurn = false;
-
     BITMAP *playerView = create_bitmap(XSCREEN, YSCREEN/2);
 
     do
@@ -408,155 +512,47 @@ void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, Play
         {
             if (p_input.endCWhere==CDESCRI && Clicked(p_input)) //click sur la description. CWhere sont déjà à -1 si la carte est face cachée
             {
-                Carte *inter = nullptr;
-                switch (p_input.endType)
-                {
-                    case PENERGY: //existence PAS déjà blindée
-                    if (p_input.endSide)
-                    {
-                        if (!m_Energie.empty())
-                            inter = m_Energie.top();
-                    }
-                    else
-                        inter = opponent.GetEnergie();
-                break;
-
-                    case PCIMETIERE: //existence PAS déjà blindée
-                    if (p_input.endSide)
-                    {
-                        if (!m_Cimetiere.empty())
-                            inter = m_Cimetiere.top();
-                    }
-                    else
-                        inter = opponent.GetCimetiere();
-                break;
-
-                    case PACTIVE: //existence déjà blindée
-                    inter = p_input.endSide ? m_Active[p_input.endNum] : opponent.GetActive(p_input.endNum);
-                break;
-
-                    case PSPECIAL: //existence déjà blindée
-                    inter = p_input.endSide ? m_Special[p_input.endNum] : opponent.GetSpecial(p_input.endNum);
-                break;
-
-                    case PMAIN: //existence déjà blindée
-                    inter = m_Main.at(p_input.endNum);
-                break;
-
-                    default: //n'arrivera à priori jamais
-                    inter = nullptr;
-                break;
-                }
-
-                if (inter)
-                    inter->Detail(buffer, p_input, sprites);
+                //test de si c'est une carte face visible + description
+                ShowDescription(opponent, buffer, sprites, p_input);
             }
             else if (p_input.startSide)
             {
                 switch (p_input.startType)
                 {
-                    case PENERGY:
-                    case PENJEU:
-                    case PPIOCHE:
-                    case PCIMETIERE:
-                    case PPLAYER:
-
+                    default: //PENERGY, PENJEU, PPIOCHE, PCIMETIERE, PPLAYER
                 break;
 
-                    case PACTIVE:
-//                    if (!m_Active[p_input.endNum]) //on blinde si la carte n'éxistait pas // mais c'est déjà blindé
-//                        break;
-
-                                //si on lache le drag dans le camp adversaire et qu'on avait séléctionné une attaque
-                    if (!p_input.endSide && (p_input.startCWhere==CATTACK1 || p_input.startCWhere==CATTACK2))
+                    case PACTIVE: //l'existance de la carte est déjà blindé
+                    case PSPECIAL: //l'éxistance de la carte est déjà blindé
+                    if (p_input.endSide && p_input.endType==PCIMETIERE)
                     {
-                        if (p_input.endType==PACTIVE)
-                        {
-                            if (opponent.GetActive(p_input.endNum))
-                            {
-                                this->m_Active[p_input.startNum]->SetAttack(p_input.endNum, p_input.startCWhere);
-                            }
-                        }
-                        else if (p_input.endType==PPLAYER)
-                        {
-                            this->m_Active[p_input.startNum]->SetAttack(-1, p_input.startCWhere);//on lui dit d'attaquer le joueur ennemi
-                        }
-                    }
-                    else// si on lache le drag dans le camp allié
-                    {
-                        if (p_input.endType==PCIMETIERE)
+                        if (p_input.startType==PACTIVE)
                         {
                             m_Cimetiere.push(m_Active[p_input.startNum]);
                             m_Active[p_input.startNum] = nullptr;
                         }
-                    }
-                break;
-
-                    case PSPECIAL: //SI PSPECIAL OU PACTIVE!!!! (on a pas break; le PACTIVE)
-                    if (!m_Special[p_input.endNum]) //on blinde si la carte n'éxistait pas
-                        break;
-                    if (p_input.endSide)
-                    {
-                        if (p_input.endType==PCIMETIERE)
+                        else
                         {
                             m_Cimetiere.push(m_Special[p_input.startNum]);
                             m_Special[p_input.startNum] = nullptr;
                         }
                     }
-
+                    else
+                    {
+                        CardAction(p_input, opponent);
+                    }
                 break;
+
 
                     case PMAIN: //drag depuis la main
                     if (p_input.endSide)
                     {
-                        CardType type = m_Main[p_input.startNum]->GetCardType();
-
-                        switch (p_input.endType)
-                        {
-                            case PENERGY:
-                            if (type==ENERGIE)
-                            {
-                                m_Energie.push(dynamic_cast<Energie *>(m_Main.at(p_input.startNum)));
-                                m_Main.erase(m_Main.begin() + p_input.startNum);
-                                m_Energie.top()->Use(m_CurrentEnergy); //on active la nouvelle carte
-                            }
-                        break;
-
-                            case PACTIVE:
-                            if (type==CREATURE && m_Active[p_input.endNum]==nullptr) // si il n'y a pas déjà une carte là
-                            {
-                                m_Active[p_input.endNum] = dynamic_cast<Creature *>(m_Main.at(p_input.startNum));
-                                m_Main.erase(m_Main.begin() + p_input.startNum);
-                            }
-                        break;
-
-                            case PSPECIAL:
-                            if (type==SPECIAL && m_Special[p_input.endNum]==nullptr)
-                            {
-                                m_Special[p_input.endNum] = dynamic_cast<Special *>(m_Main.at(p_input.startNum));
-                                m_Main.erase(m_Main.begin() + p_input.startNum);
-                            }
-                        break;
-
-                            case PCIMETIERE:
-                            m_Cimetiere.push(m_Main.at(p_input.startNum));
-                            m_Main.erase(m_Main.begin() + p_input.startNum);
-                        break;
-
-                            case PENJEU:
-                            case PPIOCHE:
-                            case PPLAYER:
-                            case PMAIN:
-
-                        break;
-                        }
+                        MoveHand(p_input);
                     }
-
                 break;
                 }
             }
         }
-
 
         rest(20);
 
@@ -566,6 +562,75 @@ void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, Play
     }while (!endTurn);
 
     p_input.dragging = false;
+}
+
+/** que si part de pactive ou pspecial */
+void Player::CardAction(PlayerInput& p_input, Player& opponent)
+{
+    if (p_input.startCWhere==CATTACK1 || p_input.startCWhere==CATTACK2) //rappel que le CACTION des cartes spéciales est le même que CATTACK1
+    {
+        if (p_input.startType==PSPECIAL)
+            m_Special[p_input.startNum]->SetAction(*this, opponent, p_input);
+        else if (p_input.startType==PACTIVE)
+        {
+            //si on lache le drag dans le camp adversaire
+            if (!p_input.endSide)
+            {
+                if (p_input.endType==PACTIVE)
+                {
+                    if (opponent.GetActive(p_input.endNum)) //si la carte visée existe
+                    {
+                        this->m_Active[p_input.startNum]->SetAttack(p_input.endNum, p_input.startCWhere);
+                    }
+                }
+                else if (p_input.endType==PPLAYER)
+                {
+                    this->m_Active[p_input.startNum]->SetAttack(-1, p_input.startCWhere);//on lui dit d'attaquer le joueur ennemi
+                }
+            }
+        }
+    }
+}
+
+void Player::MoveHand(PlayerInput& p_input)
+{
+    CardType type = m_Main[p_input.startNum]->GetCardType();
+
+    switch (p_input.endType)
+    {
+        case PENERGY:
+        if (type==ENERGIE)
+        {
+            m_Energie.push(dynamic_cast<Energie *>(m_Main.at(p_input.startNum)));
+            m_Main.erase(m_Main.begin() + p_input.startNum);
+            m_Energie.top()->Use(m_CurrentEnergy); //on active la nouvelle carte
+        }
+    break;
+
+        case PACTIVE:
+        if (type==CREATURE && m_Active[p_input.endNum]==nullptr) // si il n'y a pas déjà une carte là
+        {
+            m_Active[p_input.endNum] = dynamic_cast<Creature *>(m_Main.at(p_input.startNum));
+            m_Main.erase(m_Main.begin() + p_input.startNum);
+        }
+    break;
+
+        case PSPECIAL:
+        if (type==SPECIAL && m_Special[p_input.endNum]==nullptr)
+        {
+            m_Special[p_input.endNum] = dynamic_cast<Special *>(m_Main.at(p_input.startNum));
+            m_Main.erase(m_Main.begin() + p_input.startNum);
+        }
+    break;
+
+        case PCIMETIERE:
+        m_Cimetiere.push(m_Main.at(p_input.startNum));
+        m_Main.erase(m_Main.begin() + p_input.startNum);
+    break;
+
+        default: //PENJEU, PPIOCHE, PPLAYER, PMAIN
+    break;
+    }
 }
 
 //pourrait etre plus DRY mais bon
@@ -678,72 +743,6 @@ void Player::Draw(BITMAP *dest, bool turn, const Sprites& sprites, const PlayerI
     blit(rep, dest, 0, 0, 0, 0, dest->w, dest->h);
 
     destroy_bitmap(rep);
-}
-
-void Player::TakeDamage(int quant)
-{
-    m_HP -= quant;
-
-    if (m_HP<0)
-        m_HP = 0;
-}
-
-void Player::Reset()
-{
-    m_HP = m_MaxHP;
-
-    //on vide tout. les pointeurs sont conservés dans la colléction
-    while (!m_Deck.empty())
-        m_Deck.pop();
-
-    while (!m_Cimetiere.empty())
-        m_Cimetiere.pop();
-
-    m_Main.clear();
-
-    m_Enjeu = nullptr;
-
-    for (int i=0;i<MAXSPECIAL;i++)
-        m_Special[i] = nullptr;
-
-    for (int i=0;i<MAXACTIVE;i++)
-        m_Active[i] = nullptr;
-
-    while (!m_Energie.empty())
-        m_Energie.pop();
-
-    for (int i=0;i<NBDOMAINE;i++)
-    {
-        m_CurrentEnergy.value[i] = 0; //pourrait être changeable si peach pour le royaume champi par exemple
-    }
-
-    m_Collection.Reset();
-}
-
-
-bool Player::GetDead()
-{
-    if (m_HP<=0)
-        return true;
-
-    if (!m_Main.empty())
-        return false;
-    if (!m_Deck.empty())
-        return false;
-
-    for (int i=0;i<MAXACTIVE;i++)
-    {
-        if (m_Active[i])
-            return false;
-    }
-
-    for (int i=0;i<MAXSPECIAL;i++)
-    {
-        if (m_Special[i])
-            return false;
-    }
-
-    return true;
 }
 
 

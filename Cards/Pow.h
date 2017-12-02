@@ -11,8 +11,8 @@ class Pow : public ModeleSpecial
         Pow(int cardNum, std::istream& fichier);
         virtual ~Pow();
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // POW_H

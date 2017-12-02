@@ -11,8 +11,8 @@ class Coin : public ModeleSpecial
         Coin(int cardNum, std::istream& fichier);
         virtual ~Coin();
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // COIN_H

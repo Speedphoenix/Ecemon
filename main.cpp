@@ -104,6 +104,55 @@ void load_sprites(Sprites& sprites)
     sprites.cardTemplate = load_bitmap(FCARDT, NULL); ERR_CHARG(sprites.cardTemplate)
 }
 
+ModeleCarte *WhatCard(CardType type, int cardNum, istream& fichier)
+{
+    switch (type)
+    {
+        case ENERGIE:
+        return new ModeleEnergie(cardNum, fichier);
+    break;
+
+        case CREATURE:
+        return new ModeleCreature(cardNum, fichier);
+    break;
+
+        case SPECIAL:
+        switch (cardNum)
+        {
+            case GREENSHROOM:
+            return new GreenShroom(cardNum, fichier);
+        break;
+
+            case REDSHROOM:
+            return new RedShroom(cardNum, fichier);
+        break;
+
+            case FLOWER:
+            return new Flower(cardNum, fichier);
+        break;
+
+            case COIN:
+            return new Coin(cardNum, fichier);
+        break;
+
+            case STAR:
+            return new Star(cardNum, fichier);
+        break;
+
+            case POW:
+            return new Pow(cardNum, fichier);
+        break;
+
+            default:
+            return new ModeleSpecial(cardNum, fichier);
+        }
+    break;
+
+        default:
+        throw type;
+    }
+}
+
 void load_modeles(map<int, ModeleCarte*>& dest)
 {
     ifstream fichier(FMODELES, ios::in); ERR_CHARG(fichier.is_open())
@@ -121,32 +170,14 @@ void load_modeles(map<int, ModeleCarte*>& dest)
             fichier >> currType;
             fichier >> currNum;
 
-            ModeleCarte *nouv;
-
-            switch ((CardType) currType)
-            {
-                case ENERGIE:
-                nouv = new ModeleEnergie(currNum, fichier);
-            break;
-
-                case CREATURE:
-                nouv = new ModeleCreature(currNum, fichier);
-            break;
-
-                case SPECIAL:
-                switch (currNum)    ///mettre des #defines
-                {
-                    case 7:
-                    nouv = new Pow(currNum, fichier);
-                break;
-
-                    default:
-                    nouv = new ModeleSpecial(currNum, fichier);
-                }
-            break;
+            try{
+                dest[currNum] = WhatCard((CardType) currType, currNum, fichier);
             }
-
-            dest[currNum] = nouv;
+            catch (int a)
+            {
+                cerr << endl << "file asked for a card type that does not exist:  " << a << endl;
+                throw a;
+            }
         }
     }
     catch (const exception& e)
@@ -207,3 +238,4 @@ void init_alleg(int sizex, int sizey)
         exit(EXIT_FAILURE);
     }
 }
+

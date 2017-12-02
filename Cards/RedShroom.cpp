@@ -19,12 +19,12 @@ RedShroom::~RedShroom()
     //dtor
 }
 
-void RedShroom::StartAction(Player& ally, Player& enemy)
+void RedShroom::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void RedShroom::EndAction(Player& ally, Player& enemy)
+void RedShroom::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }

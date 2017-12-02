@@ -9,7 +9,7 @@ class ModeleCarte
     private:
 
     protected:
-        /* le numéro de la carte (dans la map) */
+        /** le numéro de la carte (dans la map) */
         int m_CardNum;
 
         std::string m_Nom;
@@ -20,14 +20,14 @@ class ModeleCarte
         ModeleCarte(int _CardNum);
         virtual ~ModeleCarte();
 
-        /* écrit la carte dans un fichier. Ne servira à priori jamais */
+        /** écrit la carte dans un fichier. Ne servira à priori jamais */
         virtual void Write_file(std::ostream& fichier);
 
-        /* lit la carte dans un fichier
+        /** lit la carte dans un fichier
         ON ASSUME QUE LE NUMÉRO DE LA CARTE A DÉJÀ ÉTÉ LU!!!*/
         virtual void Read_file(std::istream& fichier);
 
-        /* renvoie le type de carte (creature, energie, special) */
+        /** renvoie le type de carte (creature, energie, special) */
         virtual CardType GetCardType() = 0;
 
 

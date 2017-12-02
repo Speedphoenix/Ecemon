@@ -8,7 +8,7 @@
 
 class Player;
 
-/* la classe de l'action d'une créature (généralement une attaque) */
+/** la classe de l'action d'une créature (généralement une attaque) */
 class Move
 {
     private:
@@ -26,15 +26,14 @@ class Move
         Move& operator=(const Move& other);
 
 
-        /* who = -1 to attack the enemy player himself
+        /** who = -1 to attack the enemy player himself
         pas nécéssaire de passer l'allié en paramètre mais si jamais on décide de faire une classe fille vampirique..., pour la consomation d'energie aussi */
         virtual void Attack(Player& ally, Player& enemy, int who);
 
-        /* écrit la carte dans un fichier. Ne servira à priori jamais */
+        /** écrit la carte dans un fichier. Ne servira à priori jamais */
         virtual void Write_file(std::ostream& fichier);
 
-        /* lit la carte dans un fichier
-        ON ASSUME QUE LE NUMÉRO DE LA CARTE A DÉJÀ ÉTÉ LU!!!*/
+        /** lit la carte dans un fichier */
         virtual void Read_file(std::istream& fichier);
 
         //accesseur
@@ -57,10 +56,10 @@ class ModeleCreature : public ModeleCarte
         ModeleCreature(int cardNum, std::istream& fichier);
         virtual ~ModeleCreature();
 
-        /* écrit la carte dans un fichier. Ne servira à priori jamais */
+        /** écrit la carte dans un fichier. Ne servira à priori jamais */
         virtual void Write_file(std::ostream& fichier);
 
-        /* lit la carte dans un fichier
+        /** lit la carte dans un fichier
         ON ASSUME QUE LE NUMÉRO DE LA CARTE A DÉJÀ ÉTÉ LU!!!*/
         virtual void Read_file(std::istream& fichier);
 

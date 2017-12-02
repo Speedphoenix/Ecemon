@@ -19,12 +19,12 @@ Flower::~Flower()
     //dtor
 }
 
-void Flower::StartAction(Player& ally, Player& enemy)
+void Flower::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void Flower::EndAction(Player& ally, Player& enemy)
+void Flower::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }

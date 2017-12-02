@@ -11,8 +11,8 @@ class RedShroom : public ModeleSpecial
         RedShroom(int cardNum, std::istream& fichier);
         virtual ~RedShroom();
 
-        void StartAction(Player& ally, Player& enemy);
-        void EndAction(Player& ally, Player& enemy);
+        void StartAction(KeepSpecial& keep, Player& ally, Player& enemy);
+        void EndAction(KeepSpecial& keep, Player& ally, Player& enemy);
 };
 
 #endif // REDSHROOM_H

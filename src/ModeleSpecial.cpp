@@ -27,12 +27,12 @@ ModeleSpecial::~ModeleSpecial()
     //dtor
 }
 
-void ModeleSpecial::StartAction(Player& ally, Player& enemy)
+void ModeleSpecial::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void ModeleSpecial::EndAction(Player& ally, Player& enemy)
+void ModeleSpecial::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }

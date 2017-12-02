@@ -16,20 +16,26 @@ class Special : public Carte
     private:
 
     protected:
-        /* le modele de carte */
+        /** le modele de carte */
         ModeleSpecial& m_Modele;
 
-        /* nombre de tours pendant lequel la carte est encore active */
+        /** nombre de tours pendant lequel la carte est encore active */
         int m_ActiveLeft;
+
+        /** struct qui garde les infos de la carte entre le début et la fin de l'action */
+        KeepSpecial m_keep;
 
     public:
         Special(ModeleSpecial& _Modele);
         virtual ~Special();
 
-        /* Fait toutes les actions à faire avant que le joueur ait joué (par exemple décrémenter activeLeft, annuler ce qui etait mis par endturn) */
+        /** si c'est une carte nécéssitant une cible par le joueur lock sur cette cible */
+        void SetAction(Player& ally, Player& enemy, PlayerInput& p_input) { m_Modele.SetAction(m_keep, ally, enemy, p_input); }
+
+        /** Fait toutes les actions à faire avant que le joueur ait joué (par exemple décrémenter activeLeft, annuler ce qui etait mis par endturn) */
         void StartTurn(Player& ally, Player& enemy);
 
-        /* Fait toutes les actions à faire après que le joueur ait joué */
+        /** Fait toutes les actions à faire après que le joueur ait joué */
         void EndTurn(Player& ally, Player& enemy);
 
         //renvoie le type de carte

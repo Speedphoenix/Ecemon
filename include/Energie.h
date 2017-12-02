@@ -12,7 +12,7 @@ class Energie : public Carte
     private:
 
     protected:
-        /* le modele de carte */
+        /** le modele de carte */
         ModeleEnergie& m_Modele;
 
     public:

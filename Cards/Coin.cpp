@@ -19,12 +19,12 @@ Coin::~Coin()
     //dtor
 }
 
-void Coin::StartAction(Player& ally, Player& enemy)
+void Coin::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
 
-void Coin::EndAction(Player& ally, Player& enemy)
+void Coin::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
 
 }
