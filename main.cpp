@@ -68,7 +68,7 @@ int main()
                 if (players[0]->GetDead() && players[1]->GetDead())
                    cout << "\x1B[36m FELICITATIONS VOUS AVEZ RÉUSSI À FAIRE UN MATCH NUL!!!!!! \x1B[0m" << endl;
                 else
-                    cout << "Le joueur" << (players[1]->GetDead()?"1":"2") << "a gagné!!" << endl;
+                    cout << "Le joueur " << (players[1]->GetDead()?"1":"2") << " a gagné!!" << endl;
                 break;
             }
         }

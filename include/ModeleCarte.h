@@ -13,7 +13,7 @@ class ModeleCarte
         int m_CardNum;
 
         std::string m_Nom;
-        std::string m_Description;
+        std::vector<std::string> m_Description; //chaque string est une ligne
         BITMAP *m_CardFront;
 
     public:
@@ -34,8 +34,7 @@ class ModeleCarte
         int GetCardNum() { return m_CardNum; }
         std::string GetNom() { return m_Nom; }
         void SetNom(std::string val) { m_Nom = val; }
-        std::string GetDescription() { return m_Description; }
-        void SetDescription(std::string val) { m_Description = val; }
+        std::vector<std::string>& GetDescription() { return m_Description; }
 };
 
 #endif // MODELECARTE_H

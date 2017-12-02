@@ -293,7 +293,7 @@ bool ChoiceCheck(int& choiceType, int& choiceNum, int& side, int& cWhere)
     return false;
 }
 
-bool Player::InputCheck(PlayerInput& p_input)
+bool Player::InputCheck(PlayerInput& p_input, Player& opponent)
 {
     bool rep = false;
 
@@ -318,13 +318,11 @@ bool Player::InputCheck(PlayerInput& p_input)
                 break;
 
                     case PSPECIAL:
-                    if (m_Special[choiceNum])
-                        couldClick = true;
+                    couldClick = (bool)(p_input.startSide ? m_Special[choiceNum] : opponent.GetSpecial(choiceNum));
                     break;
 
                     case PACTIVE:
-                    if (m_Active[choiceNum])
-                        couldClick = true;
+                    couldClick = (bool)(p_input.startSide ? m_Active[choiceNum] : opponent.GetActive(choiceNum));
                 break;
 
                     case PMAIN:
@@ -392,12 +390,12 @@ void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, Play
         line(buffer, 0, YSCREEN/2, XSCREEN, YSCREEN/2, NOIR);
 
         draw_sprite(buffer, sprites.buttonEndTurn, XENDTURN, YENDTURN);
-        cout << mouse_x << " " << mouse_y << endl;
+     //   cout << mouse_x << " " << mouse_y << endl;
 
         draw_sprite(buffer, sprites.souris, mouse_x, mouse_y);
         blit(buffer, screen, 0, 0, 0, 0, XSCREEN, YSCREEN);
 
-        if (mouse_b&1)
+        if (mouse_b&1) //pour la fin du tour
         {
             if (!p_input.prevClick)
             {
@@ -406,11 +404,52 @@ void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, Play
             }
         }
 
-        if (InputCheck(p_input))
+        if (InputCheck(p_input, opponent))
         {
-            if (p_input.endCWhere==CDESCRI && Clicked(p_input)) //click sur la description
+            if (p_input.endCWhere==CDESCRI && Clicked(p_input)) //click sur la description. CWhere sont déjà à -1 si la carte est face cachée
             {
-                ///ADD THE DECRIPTION FUNCTION HERE
+                Carte *inter = nullptr;
+                switch (p_input.endType)
+                {
+                    case PENERGY: //existence PAS déjà blindée
+                    if (p_input.endSide)
+                    {
+                        if (!m_Energie.empty())
+                            inter = m_Energie.top();
+                    }
+                    else
+                        inter = opponent.GetEnergie();
+                break;
+
+                    case PCIMETIERE: //existence PAS déjà blindée
+                    if (p_input.endSide)
+                    {
+                        if (!m_Cimetiere.empty())
+                            inter = m_Cimetiere.top();
+                    }
+                    else
+                        inter = opponent.GetCimetiere();
+                break;
+
+                    case PACTIVE: //existence déjà blindée
+                    inter = p_input.endSide ? m_Active[p_input.endNum] : opponent.GetActive(p_input.endNum);
+                break;
+
+                    case PSPECIAL: //existence déjà blindée
+                    inter = p_input.endSide ? m_Special[p_input.endNum] : opponent.GetSpecial(p_input.endNum);
+                break;
+
+                    case PMAIN: //existence déjà blindée
+                    inter = m_Main.at(p_input.endNum);
+                break;
+
+                    default: //n'arrivera à priori jamais
+                    inter = nullptr;
+                break;
+                }
+
+                if (inter)
+                    inter->Detail(buffer, p_input, sprites);
             }
             else if (p_input.startSide)
             {

@@ -5,8 +5,6 @@ using namespace std;
 ModeleEnergie::ModeleEnergie()
     :ModeleCarte(2), m_Domaine(1), m_Energy(3)
 {
-    m_Nom = "thyird Name";
-    m_Description = "yet another description";
 
 }
 

@@ -1,5 +1,7 @@
 #include "Carte.h"
 
+using namespace std;
+
 Carte::Carte()
 {
     //ctor
@@ -18,7 +20,7 @@ void Carte::Detail(BITMAP *fond, PlayerInput& p_input, const Sprites& sprites)
     BITMAP *fenetre = create_bitmap(WFENETRE, HFENETRE);
     bool retours = false;
 
-    rectfill(fenetre, 0,0, WFENETRE, HFENETRE, BLEU); //fond de la fenetre
+    rectfill(fenetre, 0,0, WFENETRE, HFENETRE, COL_UI_FOND); //fond de la fenetre
 
     draw_sprite(fenetre, GetCardFront(), 5, 5);
 
@@ -26,8 +28,13 @@ void Carte::Detail(BITMAP *fond, PlayerInput& p_input, const Sprites& sprites)
     rectfill(fenetre, XBRETOUR - XFENETRE, YBRETOUR - YFENETRE, XBRETOUR+WBRETOUR - XFENETRE, YBRETOUR+HBRETOUR - YFENETRE, COL_BRIDGE);
 
     //assemble la fenetre (drawsprite la carte, affiche en grand le nom et la description)
-    textprintf_ex(fenetre, font, 50 + XTEXT, 50 + 1, BLANC, -1, "%s", "autrebordel");   //nom
-    textprintf_ex(fenetre, font, 50 + XTEXT, 100 + 1, BLANC, -1, "%s", "bordel");       // descirption
+    textprintf_ex(fenetre, font, 60 + XTEXT, 50 + 1, BLANC, -1, "%s", GetModele().GetNom().c_str());    //nom
+
+    vector<string>& description = GetModele().GetDescription();                                         //descirption
+    for (int i=0;i<description.size();i++) //doing this as for an array cus we need the counter
+    {
+        textprintf_ex(fenetre, font, MARGIN, 2*MARGIN + CARDHEIGHT + 9*i, BLANC, -1, "%s", description[i].c_str());
+    }
 
     //boucle evennementielle
     while (!retours)
@@ -56,7 +63,7 @@ void Carte::Detail(BITMAP *fond, PlayerInput& p_input, const Sprites& sprites)
         blit(buffer, screen,0,0, 0, 0, XSCREEN, YSCREEN);
     }
 
-    destroy_bitmap(fond);
+    destroy_bitmap(buffer);
     destroy_bitmap(fenetre);
 }
 

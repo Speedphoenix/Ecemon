@@ -66,7 +66,7 @@ void Collection::ReadFile(std::istream& fichier, std::map<int, ModeleCarte *> mo
         }
         catch (const out_of_range& e)
         {
-            cerr << endl << "THIS FILE ASKS FOR A CARD THAT DOES NOT EXIST" << endl;
+            cerr << endl << "THIS FILE ASKS FOR A CARD THAT DOES NOT EXIST" << endl << i << "th card, number" << currNum << endl;
             throw e;
         }
 

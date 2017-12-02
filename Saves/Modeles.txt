@@ -1,10 +1,12 @@
-3
+15
 
 
 1
 0
-premiere
-a first description
+Mario
+2
+Mario has always been the hero. He has the best
+experience as a plumber to do the job
 10
 2
 1
@@ -14,13 +16,173 @@ a first description
 
 2
 1
-Second Name
-another description
-3
+Shroom
+2
+Shroom has always been the first in line to be eaten.
+Will it remain that way?
+2
 
 0
 2
-thyird Name
-yet another description
+Warp Pipe
+2
+Very kind and usefull.
+It has yet know the existence of his other end though
+0
+3
+
 1
 3
+Luigi
+2
+After being oppressed for being the second bro, 
+Luigi is now back. Stronger.
+10
+2
+3
+0 0 0 0
+2
+0 0 0 0
+
+2
+4
+Fire Flower
+2
+The Fire Flower used to feel dejected about only coming
+after a Shroom. Now's the time to heat things up.
+3
+
+2
+5
+Coin
+2
+Just a coin. It just wanted to be of use but somehow 
+always fell short.
+1
+
+2
+6
+Super Star
+2
+The real Star of the game. Its radiance comes from the 
+admiration people give it
+3
+
+2
+7
+POW Block
+2
+He is often seen as rude from others, but can't help it.
+It's not like they are getting used that way, right?
+3
+
+2
+8
+Green Shroom
+2
+Just comes, leaves a life to the taker and..
+Oh no! They ate him!
+3
+
+1
+9
+CREATURE N3
+1
+DESCRIPTION
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+1
+10
+CREATURE N4
+1
+DESCRIPTION
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+1
+11
+CREATURE N5
+1
+DESCRIPTION
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+0
+12
+Cave Rock
+1
+Just a rock
+1
+3
+
+0
+13
+Smiling Cloud
+1
+They say the Smiling cloud got this high by smiling...
+2
+2
+
+0
+14
+Magma
+3
+The Magma was trained hard by Bowser, try to cover as 
+much as possible and reap anyone who comes in contact...
+even him.
+3
+1
+
+
+
+
+///for here on this will not be read by the program (nor will it be overridden)
+example of Modeles.txt file:
+	//NOTE:
+	//we will probably add the file path to the info
+
+3 	//number of card models
+
+
+1 	//cardType, here creature
+0	//cardNum, different for each card
+Mario	//name
+1	//the number of lines in the description
+descri	//first line of description. max 57 chars per line
+muaha	//second line of description.____________________________///these 4 are the same for every type of card
+10	//hp
+2	//number of moves
+1	//damage of the first move
+0 0 0 0	//consumption of the move for each energy domain
+2	//damage of second move...
+0 0 0 0
+
+2	//cardtype, here special
+1
+Shroom
+1
+Shroom's description
+3	//number of active turns
+
+0	//cardtype, here energy
+2
+Fire Energy
+1
+Fire Energy's description
+1	//domain of the energy
+3	//amount of energy	///might be changed to 4-value domains like for the moves
+
+

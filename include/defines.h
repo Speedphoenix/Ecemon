@@ -155,7 +155,7 @@ struct Domaines{
 #define COL_P2_FOND makecol(0,114,144)  //plus bleu cool clair
 
 /// ces couleurs sont celles qu'on utilisait dans le projet ECEcraft. Quand besoin on peut les réutiliser
-//#define COL_UI_FOND makecol(1,87,155)
+#define COL_UI_FOND makecol(1,87,155)
 #define COL_UI_ACC makecol(79,195,247)  //un joli bleu clair (je crois)
 #define COL_SAND makecol(194,132,80)
 #define COL_BRIDGE makecol(122,61,0)
@@ -198,7 +198,7 @@ struct Domaines{
 #endif // _WINDOWS
 
 
-#define PRINT(x) {cout<<endl<<x<<endl;cout.flush();}
+#define PRINT(x) {cout<<endl<<x<<endl();}       //endl() also flushes the stream
 
 // renvoie une erreur de chargement
 #define ERR_CHARG(x) {if(!x){cerr<<"probleme de chargement: " #x " \n";throw 1;}}

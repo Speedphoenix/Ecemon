@@ -5,8 +5,6 @@ using namespace std;
 ModeleSpecial::ModeleSpecial()
     :ModeleCarte(1), m_ActiveLeft(3)
 {
-    m_Nom = "Second Name";
-    m_Description = "another description";
     m_CardFront = load_bitmap(FCARDT, NULL); ERR_CHARG(m_CardFront) ///À ENLEVER
 
     rectfill(m_CardFront, XDESCRI, YDESCRI, XDESCRI + WDESCRI, YDESCRI + HDESCRI, BLEU);
