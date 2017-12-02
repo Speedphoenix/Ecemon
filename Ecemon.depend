@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1512235268 source:/home/leonardo/Documents/Programmes/C++/Ecemon/main.cpp
+1512240190 source:/home/leonardo/Documents/Programmes/C++/Ecemon/main.cpp
 	"defines.h"
 	"Player.h"
 
@@ -7,7 +7,7 @@
 	<string>
 	<allegro.h>
 
-1512235298 /home/leonardo/Documents/Programmes/C++/Ecemon/include/defines.h
+1512242469 /home/leonardo/Documents/Programmes/C++/Ecemon/include/defines.h
 	<allegro.h>
 	<exception>
 	<iostream>
@@ -28,7 +28,7 @@
 	"defines.h"
 	"ModeleCarte.h"
 
-1512055150 /home/leonardo/Documents/Programmes/C++/Ecemon/include/ModeleSpecial.h
+1512240544 /home/leonardo/Documents/Programmes/C++/Ecemon/include/ModeleSpecial.h
 	"defines.h"
 	"ModeleCarte.h"
 
@@ -46,10 +46,15 @@
 	"Carte.h"
 	"ModeleEnergie.h"
 
-1512074793 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Special.h
+1512242845 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Special.h
 	"defines.h"
 	"Carte.h"
-	"ModeleSpecial.h"
+	"Coin.h"
+	"Flower.h"
+	"GreenShroom.h"
+	"Pow.h"
+	"RedShroom.h"
+	"Star.h"
 
 1512235311 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Carte.cpp
 	"Carte.h"
@@ -67,18 +72,19 @@
 1512233866 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/ModeleEnergie.cpp
 	"ModeleEnergie.h"
 
-1512233868 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/ModeleSpecial.cpp
+1512240425 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/ModeleSpecial.cpp
 	"ModeleSpecial.h"
+	"Player.h"
 
-1512074847 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Special.cpp
+1512240502 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Special.cpp
 	"Special.h"
 	"Player.h"
 
-1512225207 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Player.h
+1512242367 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Player.h
 	"defines.h"
 	"Collection.h"
 
-1512226168 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Player.cpp
+1512240137 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Player.cpp
 	"Player.h"
 
 1511716992 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Move.h
@@ -102,4 +108,46 @@
 
 1512234836 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Collection.cpp
 	"Collection.h"
+
+1512242294 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Coin.cpp
+	"Coin.h"
+	"Player.h"
+
+1512241955 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Coin.h
+	<ModeleSpecial.h>
+
+1512242290 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Flower.cpp
+	"Flower.h"
+	"Player.h"
+
+1512241942 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Flower.h
+	<ModeleSpecial.h>
+
+1512242286 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/GreenShroom.cpp
+	"GreenShroom.h"
+	"Player.h"
+
+1512241902 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/GreenShroom.h
+	<ModeleSpecial.h>
+
+1512242404 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Pow.cpp
+	"Pow.h"
+	"Player.h"
+
+1512242086 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Pow.h
+	<ModeleSpecial.h>
+
+1512242282 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/RedShroom.cpp
+	"RedShroom.h"
+	"Player.h"
+
+1512242082 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/RedShroom.h
+	<ModeleSpecial.h>
+
+1512242278 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Star.cpp
+	"Star.h"
+	"Player.h"
+
+1512241931 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Star.h
+	<ModeleSpecial.h>
 

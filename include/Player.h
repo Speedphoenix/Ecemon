@@ -44,7 +44,7 @@ class Player
         void EndTurn(Player& enemy);
 
         /* Fait toutes les actions à faire avant que le joueur ait joué */
-        void StartTurn();
+        void StartTurn(Player& enemy);
 
         /* La boucle évennementielle. effectue aussi les action à partir de ce que le joueur choisit */
         void Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, PlayerInput& p_input);
@@ -76,6 +76,7 @@ class Player
         Special* GetSpecial(int num) { return m_Special[num]; }
         Energie* GetEnergie() { return m_Energie.empty()?nullptr:m_Energie.top(); }
         Carte* GetCimetiere() { return m_Cimetiere.empty()?nullptr:m_Cimetiere.top(); }
+
         std::string GetNom() { return m_Nom; }
         void SetNom(std::string val) { m_Nom = val; }
         Collection GetCollection() { return m_Collection; }

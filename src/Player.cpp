@@ -139,7 +139,7 @@ void Player::EndTurn(Player& enemy)
 
 }
 
-void Player::StartTurn()
+void Player::StartTurn(Player& enemy)
 {
     if (m_Main.size()<MAXHAND && !m_Deck.empty())
     {
@@ -151,7 +151,7 @@ void Player::StartTurn()
     {
         if (m_Special[i])
         {
-            m_Special[i]->StartTurn();
+            m_Special[i]->StartTurn(*this, enemy);
 
             if (!m_Special[i]->GetActiveLeft()) //si la carte a expiré, faut l'enlever
             {

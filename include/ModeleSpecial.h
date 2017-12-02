@@ -4,6 +4,8 @@
 #include "defines.h"
 #include "ModeleCarte.h"
 
+class Player;
+
 class ModeleSpecial : public ModeleCarte
 {
     private:
@@ -17,9 +19,9 @@ class ModeleSpecial : public ModeleCarte
         ModeleSpecial(int cardNum, std::istream& fichier);
         virtual ~ModeleSpecial();
 
-        void StartAction();
+        virtual void StartAction(Player& ally, Player& enemy);
 
-        void EndAction();
+        virtual void EndAction(Player& ally, Player& enemy);
 
         /* écrit la carte dans un fichier. Ne servira à priori jamais */
         virtual void Write_file(std::ostream& fichier);

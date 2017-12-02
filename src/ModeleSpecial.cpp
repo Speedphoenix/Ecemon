@@ -1,5 +1,7 @@
 #include "ModeleSpecial.h"
 
+#include "Player.h"
+
 using namespace std;
 
 ModeleSpecial::ModeleSpecial()
@@ -25,12 +27,12 @@ ModeleSpecial::~ModeleSpecial()
     //dtor
 }
 
-void ModeleSpecial::StartAction()
+void ModeleSpecial::StartAction(Player& ally, Player& enemy)
 {
 
 }
 
-void ModeleSpecial::EndAction()
+void ModeleSpecial::EndAction(Player& ally, Player& enemy)
 {
 
 }

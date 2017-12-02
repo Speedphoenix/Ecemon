@@ -3,9 +3,13 @@
 
 #include "defines.h"
 #include "Carte.h"
-#include "ModeleSpecial.h"
 
-class Player;
+#include "Coin.h"
+#include "Flower.h"
+#include "GreenShroom.h"
+#include "Pow.h"
+#include "RedShroom.h"
+#include "Star.h"
 
 class Special : public Carte
 {
@@ -22,8 +26,8 @@ class Special : public Carte
         Special(ModeleSpecial& _Modele);
         virtual ~Special();
 
-        /* Fait toutes les actions à faire avant que le joueur ait joué (par exemple décrémenter activeLeft) */
-        void StartTurn();
+        /* Fait toutes les actions à faire avant que le joueur ait joué (par exemple décrémenter activeLeft, annuler ce qui etait mis par endturn) */
+        void StartTurn(Player& ally, Player& enemy);
 
         /* Fait toutes les actions à faire après que le joueur ait joué */
         void EndTurn(Player& ally, Player& enemy);

@@ -15,6 +15,10 @@
 #include <map>
 
 
+///Gameplay/balance
+#define POWFREEZE 1 //nombre de tours que le pow freeze
+
+
 ///MAGIC NUMBERS AND ENUMS
 // le nombre max de cartes dans les differents endroits du plateau
 #define MAXHAND 5

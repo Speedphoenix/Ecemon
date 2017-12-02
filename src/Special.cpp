@@ -19,8 +19,10 @@ BITMAP *Special::GetCardFront()
     return m_Modele.GetCardFront();
 }
 
-void Special::StartTurn()
+void Special::StartTurn(Player& ally, Player& enemy)
 {
+    m_Modele.EndAction(ally, enemy);
+
     m_ActiveLeft--;
 
     if (m_ActiveLeft<0) //on sait jamais
@@ -29,7 +31,7 @@ void Special::StartTurn()
 
 void Special::EndTurn(Player& ally, Player& enemy)
 {
-    //l'action specifique à la carte
+    m_Modele.StartAction(ally, enemy);
 }
 
 void Special::Reset()

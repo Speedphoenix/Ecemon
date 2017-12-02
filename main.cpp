@@ -46,7 +46,7 @@ int main()
     {
         for (int i=0;i<2;i++)
         {
-            players[i]->StartTurn();
+            players[i]->StartTurn(*players[!i]);
 
             p_input.whoTurn = i;
 
@@ -121,20 +121,32 @@ void load_modeles(map<int, ModeleCarte*>& dest)
             fichier >> currType;
             fichier >> currNum;
 
+            ModeleCarte *nouv;
+
             switch ((CardType) currType)
             {
                 case ENERGIE:
-                dest[currNum] = new ModeleEnergie(currNum, fichier);
+                nouv = new ModeleEnergie(currNum, fichier);
             break;
 
                 case CREATURE:
-                dest[currNum] = new ModeleCreature(currNum, fichier);
+                nouv = new ModeleCreature(currNum, fichier);
             break;
 
                 case SPECIAL:
-                dest[currNum] = new ModeleSpecial(currNum, fichier);
+                switch (currNum)    ///mettre des #defines
+                {
+                    case 7:
+                    nouv = new Pow(currNum, fichier);
+                break;
+
+                    default:
+                    nouv = new ModeleSpecial(currNum, fichier);
+                }
             break;
             }
+
+            dest[currNum] = nouv;
         }
     }
     catch (const exception& e)
