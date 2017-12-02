@@ -114,13 +114,28 @@ void Player::ReadFile(istream& fichier, map<int, ModeleCarte *> modeles)
     fichier.ignore(1, '\n');
 }
 
-
-void Player::TakeDamage(int quant)
+void Player::NewGame()
 {
-    m_HP -= quant;
+    m_Collection.CreateDeck(m_Deck);
 
-    if (m_HP<0)
-        m_HP = 0;
+    m_Enjeu = m_Deck.front();
+    m_Deck.pop();
+}
+
+Carte *Player::LoseEnjeu()
+{
+    Carte *rep = m_Enjeu;
+    m_Enjeu = nullptr;
+    m_Collection.RemoveCard(rep);
+
+    //maintenant la variable locale rep est le seul pointeur sur cette carte
+
+    return rep;
+}
+
+void Player::WinGame(Player& loser)
+{
+    m_Collection.AddCard(loser.LoseEnjeu());
 }
 
 void Player::Reset()
@@ -136,7 +151,6 @@ void Player::Reset()
 
     m_Main.clear();
 
-    m_Enjeu = nullptr;
 
     for (int i=0;i<MAXSPECIAL;i++)
         m_Special[i] = nullptr;
@@ -152,7 +166,22 @@ void Player::Reset()
         m_CurrentEnergy.value[i] = 0; //pourrait être changeable si peach pour le royaume champi par exemple
     }
 
+    if (m_Enjeu) //si l'enjeu n'est pas perdu on le garde
+    {
+        m_Collection.AddCard(m_Enjeu);
+        m_Enjeu = nullptr;
+    }
+
     m_Collection.Reset();
+}
+
+
+void Player::TakeDamage(int quant)
+{
+    m_HP -= quant;
+
+    if (m_HP<0)
+        m_HP = 0;
 }
 
 bool Player::GetDead()

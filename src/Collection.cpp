@@ -37,6 +37,30 @@ void Collection::WriteFile(std::ostream& fichier)
     }
 }
 
+void Collection::AddCard(Carte *ajout)
+{
+    if (ajout)
+    {
+        m_Cartes.push_back(ajout);
+    }
+    else
+    {
+        throw invalid_argument("null pointer");
+    }
+}
+
+void Collection::RemoveCard(Carte *takeOut)
+{
+    vector<Carte *>::iterator it;
+    for (it = m_Cartes.begin();it!=m_Cartes.end();it++)
+    {
+        if (*it==takeOut)
+        {
+            m_Cartes.erase(it);
+            break;
+        }
+    }
+}
 
 void Collection::ReadFile(std::istream& fichier, std::map<int, ModeleCarte *> modeles) //pas oublier de vider le vecteur
 {
