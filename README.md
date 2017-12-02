@@ -5,7 +5,8 @@ TODO:
 
 - [x] Finir la boucle de jeu
 - [ ] Coder les spéciales
-- [ ] Créer toutes les cartes, les mettre dans une collection, chargement depuis un fichier
+- [x] Créer toutes les cartes, les mettre dans une collection, chargement depuis un fichier
+- [ ] les images des cartes
 - [ ] Créer un joueur
     * Créer/assembler une collection
     * Créer un deck
@@ -18,8 +19,8 @@ TODO:
 Dans le CDC de base:
 
 - [X] 4 domaines (types d'énergies...)
-- [ ] 4 modèles de cartes énergie (une par domaine au moins)
-- [ ] 5 modèles de cartes créatures avec chacune au moins 2 attaques
+- [x] 4 modèles de cartes énergie (une par domaine au moins)
+- [x] 5 modèles de cartes créatures avec chacune au moins 2 attaques
 - [ ] 6 modèles de cartes spéciales permettant d'altérer les mécanismes par défaut du jeu
 - [ ] Nombre indéfini de joueurs, pouvoir ajouter des joueurs...
 - [ ] Pouvoir acheter des cartes pour faire évoluer les collections des joueurs
