@@ -1,3 +1,5 @@
+# here are the sources of every external image we used
+
 https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/0kjHIH6/animation-of-1980s-old-arcade-super-mario-bros-clouds-background_vywb1uvex__F0000.png
 
 https://upload.wikimedia.org/wikipedia/en/2/2d/Lakitu.png
