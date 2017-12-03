@@ -197,8 +197,9 @@ struct Domaines{
 #define FSOURIS "Res\\mario_mouse_cursor.bmp"   //32x30
 #define FENDTURN "Res\\End_Turn_Button.bmp"     //50x30
 #define FPLAYER "Res\\Player_Button.bmp"        //50x30
-#define FCARDB "Res\\Card_Back.bmp"             //70x100
+#define FCARDB "Res\\dos cartes.bmp"            //70x100
 #define FFOND "Res\\Fond.bmp"                   //668x1000
+#define FMENU "Res\\MENU PROJET.bmp"            //668x1000
 
 #define FMODELES "Saves\\Modeles.txt"           //contient les infos des cartes
 #define FPINFO "Saves\\P_info.txt"              //contient l'info des joueurs (les cartes, hp etc)
@@ -208,9 +209,10 @@ struct Domaines{
 #define FSOURIS "Res/mario_mouse_cursor.bmp"    //32x30
 #define FENDTURN "Res/End_Turn_Button.bmp"      //50x30
 #define FPLAYER "Res/Player_Button.bmp"         //50x30
-#define FCARDB "Res/Card_Back.bmp"              //70x100
+#define FCARDB "Res/dos cartes.bmp"             //70x100
 #define FCARDT "Res/Card_Template.bmp"          //70x100
 #define FFOND "Res/Fond.bmp"                    //668x1000
+#define FMENU "Res/MENU PROJET.bmp"             //668x1000
 
 #define FMODELES "Saves/Modeles.txt"            //contient les infos des cartes
 #define FPINFO "Saves/P_info.txt"               //contient l'info des joueurs (les cartes, hp etc)
@@ -230,6 +232,7 @@ struct Sprites{
     BITMAP *cardBack;
     BITMAP *cardTemplate;
     BITMAP *fond;
+    BITMAP *menu;
 };
 
 #endif //DEFINES_H_INCLUDED

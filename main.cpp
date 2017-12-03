@@ -33,7 +33,7 @@ int main()
     load_players(playerList, modeles);
 
     show_mouse(screen);
-    blit(sprites.fond, screen, 0, 0, 0, 0, XSCREEN, YSCREEN);
+    blit(sprites.menu, screen, 0, 0, 0, 0, XSCREEN, YSCREEN);
 
     //buffer = create_bitmap(XSCREEN, YSCREEN);
 
@@ -246,6 +246,7 @@ void load_sprites(Sprites& sprites)
     sprites.cardBack = load_bitmap(FCARDB, NULL); ERR_CHARG(sprites.cardBack)
     sprites.cardTemplate = load_bitmap(FCARDT, NULL); ERR_CHARG(sprites.cardTemplate)
     sprites.fond = load_bitmap(FFOND, NULL); ERR_CHARG(sprites.fond)
+    sprites.menu = load_bitmap(FMENU,NULL); ERR_CHARG(sprites.menu)
 }
 
 ModeleCarte *WhatCard(CardType type, int cardNum, istream& fichier)

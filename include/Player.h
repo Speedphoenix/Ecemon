@@ -76,6 +76,7 @@ class Player
         void NewCol(std::map<int, ModeleCarte *> modeles);
 
         //accesseurs "utiles"/"necessaires"
+
         /** revoie true si le joueur a perdu */
         bool GetDead();
 
