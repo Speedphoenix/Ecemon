@@ -8,11 +8,11 @@ Mario
 Mario has always been the hero. He has the best
 experience as a plumber to do the job
 creatures/mario.bmp
-10
+6
 2
-1
+2
 0 0 0 0
-2
+3
 0 0 0 0
 
 2
@@ -24,7 +24,7 @@ Will it remain that way?
 This card increases the damage of one card by 2 for 
 one turn as long as this card is active
 speciales/champi rouge.bmp
-2
+3
 
 0
 2
@@ -43,7 +43,7 @@ Luigi
 After being oppressed for being the second bro, 
 Luigi is now back. Stronger.
 creatures/luigi.bmp
-10
+6
 2
 3
 0 0 0 0
@@ -108,11 +108,11 @@ Bowser
 1
 DESCRIPTION
 creatures/bowser.bmp
-10
+5
 2
-1
+3
 0 0 0 1
-1
+4
 0 5 0 0
 
 1
@@ -121,11 +121,11 @@ Lakitu
 1
 DESCRIPTION
 creatures/lakitu.bmp
-10
+5
 2
-1
+2
 0 0 0 0
-1
+4
 0 0 0 0
 
 1
@@ -134,11 +134,11 @@ Paratroopa
 1
 DESCRIPTION
 creatures/paratroopa.bmp
-10
+7
 2
-1
+2
 0 0 0 0
-1
+2
 0 0 0 0
 
 0
@@ -158,7 +158,7 @@ Smiling Cloud
 They say the Smiling cloud got this high by smiling...
 energies/nuage.bmp
 2
-2
+3
 
 0
 14
@@ -169,7 +169,7 @@ much as possible and reap anyone who comes in contact...
 even his master.
 energies/lave.bmp
 3
-1
+3
 
 1
 15
@@ -177,11 +177,11 @@ King Boo
 1
 DESCRIPTION
 creatures/roiboo.bmp
-10
+6
 2
-1
+2
 0 0 0 0
-1
+2
 0 0 0 0
 
 1
@@ -190,7 +190,7 @@ Dry Bones
 1
 DESCRIPTION
 creatures/skelerex.bmp
-10
+7
 2
 1
 0 0 0 0
@@ -203,11 +203,11 @@ Wario
 1
 DESCRIPTION
 creatures/wario.bmp
-10
+3
 2
-1
+3
 0 0 0 0
-1
+4
 0 0 0 0
 
 
