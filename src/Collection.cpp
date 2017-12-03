@@ -15,13 +15,62 @@ Collection::~Collection()
     }
 }
 
-/// A REFAIRE
+
 void Collection::CreateDeck(queue<Carte *>& deck)
 {
-    while (!deck.empty())
+    cout << "Please choose " << DECKSIZE << " cards amongst the following to create your deck" << endl
+         << "PRESS ENTER TO CONTINUE" << endl;
+
+    cin.ignore(1, '\n');
+
+    for (int i=0;i<m_Cartes.size();i++)
+    {
+        cout << endl << i << "\t" << m_Cartes.at(i)->GetModele().GetNom() << endl;
+    }
+
+    vector<Carte *> newOne;
+
+    for (int i=0;i<DECKSIZE;i++)
+    {
+        bool works = false;
+
+        Carte *currCard;
+        do
+        {
+            int currNum;
+            cin >> currNum;
+
+            try{
+                currCard = m_Cartes.at(currNum);
+                works = true;
+
+                vector<Carte *>::iterator it;
+                for (it = newOne.begin();it!=newOne.end();it++)
+                {
+                    if (*it==currCard) //on compare le pointeur, pas la carte elle meme
+                    {
+                        works = false;
+                        cout << endl << "You already added this card" << endl;
+                        break;
+                    }
+                }
+            }
+            catch (const out_of_range& e)
+            {
+                cout << endl << "This/a card that you asked for doesn't exist" << endl;
+                works = false;
+            }
+        } while (!works);
+
+        newOne.push_back(currCard);
+    }
+
+    random_shuffle (newOne.begin(), newOne.end());
+
+    while (!deck.empty()) //on vide le deck précédent (sais jamais)
         deck.pop();
 
-    for (const auto& elem : m_Cartes)
+    for (const auto& elem : newOne)
         deck.push(elem);
 }
 
@@ -46,6 +95,24 @@ void Collection::AddCard(Carte *ajout)
     else
     {
         throw invalid_argument("null pointer");
+    }
+}
+
+void Collection::AddNewCard(ModeleCarte *ajout)
+{
+    switch (ajout->GetCardType())
+    {
+        case CREATURE:
+        m_Cartes.push_back(new Creature(*dynamic_cast<ModeleCreature *>(ajout)));
+    break;
+
+        case ENERGIE:
+        m_Cartes.push_back(new Energie(*dynamic_cast<ModeleEnergie *>(ajout)));
+    break;
+
+        case SPECIAL:
+        m_Cartes.push_back(new Special(*dynamic_cast<ModeleSpecial *>(ajout)));
+    break;
     }
 }
 
@@ -94,20 +161,7 @@ void Collection::ReadFile(std::istream& fichier, std::map<int, ModeleCarte *> mo
             throw e;
         }
 
-        switch (currModele->GetCardType())
-        {
-            case CREATURE:
-            m_Cartes.push_back(new Creature(*dynamic_cast<ModeleCreature *>(currModele)));
-        break;
-
-            case ENERGIE:
-            m_Cartes.push_back(new Energie(*dynamic_cast<ModeleEnergie *>(currModele)));
-        break;
-
-            case SPECIAL:
-            m_Cartes.push_back(new Special(*dynamic_cast<ModeleSpecial *>(currModele)));
-        break;
-        }
+        AddNewCard(currModele);
     }
 
     //so that reading the next player doesn't create problems with getline

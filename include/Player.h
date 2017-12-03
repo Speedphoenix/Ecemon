@@ -71,8 +71,8 @@ class Player
         /** Charge un joueur (PAS LA PARTIE) */
         void ReadFile(std::istream& fichier, std::map<int, ModeleCarte *> modeles);
 
-        //entreer les cartes depuis le joueur
-        ///void CreateNew(map<int, ModeleCarte *> modeles);
+        /** entreer les cartes pour une nouvelle collection depuis l'utilisateur */
+        void NewCol(std::map<int, ModeleCarte *> modeles);
 
         //accesseurs "utiles"/"necessaires"
         /** revoie true si le joueur a perdu */
@@ -89,7 +89,7 @@ class Player
 
         std::string GetNom() { return m_Nom; }
         void SetNom(std::string val) { m_Nom = val; }
-        Collection GetCollection() { return m_Collection; }
+        Collection& GetCollection() { return m_Collection; }
         void SetCollection(Collection val) { m_Collection = val; }
         std::queue<Carte*> GetDeck() { return m_Deck; }
         void SetDeck(std::queue<Carte*> val) { m_Deck = val; }

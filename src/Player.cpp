@@ -25,9 +25,16 @@ Player::Player()
 }
 
 Player::Player(map<int, ModeleCarte *> modeles)
-    :m_Nom("Moi"), m_HP(20), m_MaxHP(20)
+    :m_HP(20), m_MaxHP(20)
 {
     m_Enjeu = nullptr;
+
+    cin.ignore(1, '\n');
+
+    cout << endl << "What is your name?" << endl;
+    getline(cin, m_Nom);
+
+    NewCol(modeles);
 
     for (int i=0;i<MAXSPECIAL;i++)
     {
@@ -38,17 +45,6 @@ Player::Player(map<int, ModeleCarte *> modeles)
     {
         m_Active[i] = nullptr;
     }
-
-///                     BAAAAAAAAAAAAAAAAAAAAAAAAAADDDDDDD
-    m_Deck.push(new Creature(*(dynamic_cast<ModeleCreature *>(modeles[0]))));
-    m_Deck.push(new Creature(*(dynamic_cast<ModeleCreature *>(modeles[0]))));
-    m_Deck.push(new Energie(*(dynamic_cast<ModeleEnergie *>(modeles[2]))));
-    m_Deck.push(new Creature(*(dynamic_cast<ModeleCreature *>(modeles[0]))));
-    m_Deck.push(new Special(*(dynamic_cast<ModeleSpecial *>(modeles[1]))));
-    m_Deck.push(new Special(*(dynamic_cast<ModeleSpecial *>(modeles[1]))));
-    m_Deck.push(new Creature(*(dynamic_cast<ModeleCreature *>(modeles[0]))));
-    m_Deck.push(new Creature(*(dynamic_cast<ModeleCreature *>(modeles[0]))));
-
 
     for (int i=0;i<NBDOMAINE;i++)
     {
@@ -114,19 +110,54 @@ void Player::ReadFile(istream& fichier, map<int, ModeleCarte *> modeles)
     fichier.ignore(1, '\n');
 }
 
+void Player::NewCol(map<int, ModeleCarte *> modeles)
+{
+    cout << "Please choose " << CSTARTSIZE << " cards amongst the following to create your collection" << endl
+         << "PRESS ENTER TO CONTINUE" << endl;
+
+    cin.ignore(1, '\n');
+
+    for (const auto& elem : modeles)
+    {
+        cout << endl << elem.second->GetCardNum() << "\t" << elem.second->GetNom() << endl;
+    }
+
+    for (int i=0;i<CSTARTSIZE;i++)
+    {
+        bool works = false;
+        do
+        {
+            int currNum;
+            cin >> currNum;
+
+            try{
+                m_Collection.AddNewCard(modeles.at(currNum));
+                works = true;
+            }
+            catch (const out_of_range& e)
+            {
+                cout << endl << "This/a card that you asked for doesn't exist" << endl;
+                works = false;
+            }
+        } while (!works);
+    }
+}
+
 void Player::NewGame()
 {
     m_Collection.CreateDeck(m_Deck);
 
     m_Enjeu = m_Deck.front();
     m_Deck.pop();
+
+    m_Collection.RemoveCard(m_Enjeu); //l'enjeu n'exeiste que en jeu
+
 }
 
 Carte *Player::LoseEnjeu()
 {
     Carte *rep = m_Enjeu;
     m_Enjeu = nullptr;
-    m_Collection.RemoveCard(rep);
 
     //maintenant la variable locale rep est le seul pointeur sur cette carte
 
@@ -506,7 +537,7 @@ bool Clicked(const PlayerInput& p_input)
             && p_input.endType==p_input.startType);
 }
 
-///contient la boucle evennementielle
+//contient la boucle evennementielle
 void Player::Turn(Player& opponent, BITMAP *buffer, const Sprites& sprites, PlayerInput& p_input)
 {
     bool endTurn = false;

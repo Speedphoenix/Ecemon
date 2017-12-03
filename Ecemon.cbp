@@ -15,6 +15,7 @@
 					<Add option="-std=c++14" />
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="Cards" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -25,6 +26,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="Cards" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -35,11 +37,23 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
-			<Add option="-Wextra -Wno-sign-compare" />
+			<Add option="-Wno-sign-compare" />
 		</Compiler>
 		<Linker>
 			<Add library="alleg" />
 		</Linker>
+		<Unit filename="Cards/Coin.cpp" />
+		<Unit filename="Cards/Coin.h" />
+		<Unit filename="Cards/Flower.cpp" />
+		<Unit filename="Cards/Flower.h" />
+		<Unit filename="Cards/GreenShroom.cpp" />
+		<Unit filename="Cards/GreenShroom.h" />
+		<Unit filename="Cards/Pow.cpp" />
+		<Unit filename="Cards/Pow.h" />
+		<Unit filename="Cards/RedShroom.cpp" />
+		<Unit filename="Cards/RedShroom.h" />
+		<Unit filename="Cards/Star.cpp" />
+		<Unit filename="Cards/Star.h" />
 		<Unit filename="include/Carte.h" />
 		<Unit filename="include/Collection.h" />
 		<Unit filename="include/Creature.h" />

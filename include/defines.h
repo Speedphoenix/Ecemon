@@ -4,6 +4,7 @@
 ///LINKERS/INCLUDES
 #include <allegro.h>
 #include <exception>
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <ostream>
@@ -25,6 +26,9 @@
 #define MAXACTIVE 5
 #define MAXSPECIAL 1
 #define MAXMOVES 2 //le nombre d'attaques max par créature
+
+#define DECKSIZE 20
+#define CSTARTSIZE 25
 
 #define NBDOMAINE 4
 
@@ -210,7 +214,7 @@ struct Domaines{
 #endif // _WINDOWS
 
 
-#define PRINT(x) {cout<<endl<<x<<endl();}       //endl() also flushes the stream
+#define PRINT(x) {cerr<<endl<<x<<endl;}
 
 // renvoie une erreur de chargement
 #define ERR_CHARG(x) {if(!x){cerr<<"probleme de chargement: " #x " \n";throw 1;}}

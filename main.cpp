@@ -13,6 +13,9 @@ void init_alleg(int sizex, int sizey);
 void load_sprites(Sprites& sprites);
 void load_modeles(map<int, ModeleCarte*>& dest);
 void load_players(vector<Player *>& players, map<int, ModeleCarte *> modeles);
+int choix(int type = 0);
+bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2]);
+int Game(const Sprites& sprites, PlayerInput& p_input, Player *players[2]);
 
 int main()
 {
@@ -24,7 +27,6 @@ int main()
     vector<Player *> playerList;
     PlayerInput p_input;
     Player *players[2];
-    bool endGame = false;
 
     load_sprites(sprites);
     load_modeles(modeles);
@@ -32,53 +34,32 @@ int main()
 
     buffer = create_bitmap(XSCREEN, YSCREEN);
 
-    //préparation à la partie
-    players[0] = playerList.at(0);
-    players[1] = playerList.at(1);
+    ///fin de l'initialisation du jeu
 
-    players[0]->NewGame();
-    players[1]->NewGame();
-
-    p_input.dragging = false;
-    p_input.prevClick = false;
-
-    while (!key[KEY_ESC] && !endGame)
-    {
-        for (int i=0;i<2;i++)
+    bool quit = false;
+    do{
+        switch (choix(0))
         {
-            players[i]->StartTurn(*players[!i]);
+            case 0:
+            quit = true;
+        break;
 
-            p_input.whoTurn = i;
-
-            players[i]->Turn(*players[!i], buffer, sprites, p_input);
-
-            if (key[KEY_ESC])
+            case 1: //nouvelle partie
+            if (nouvellePartie(modeles, playerList, players))
             {
-                cout << endl << "Pressed ESC!!!!!" << endl;
-                break;
+                int gagnant = Game(sprites, p_input, players);
+
+                players[0]->Reset();
+                players[1]->Reset();
             }
 
-            players[i]->EndTurn(*players[!i]);
+        break;
 
-            if (players[0]->GetDead() || players[1]->GetDead())
-            {
-                endGame = true;
-                cout << endl << "partie terminée!!" << endl;
-
-                if (players[0]->GetDead() && players[1]->GetDead())
-                   cout << "\x1B[36m FELICITATIONS VOUS AVEZ RÉUSSI À FAIRE UN MATCH NUL!!!!!! \x1B[0m" << endl;
-                else
-                {
-                    int winner = players[0]->GetDead();
-                    cout << "Le joueur " << (!winner?"1":"2") << " a gagné!!" << endl;
-
-                    players[winner]->WinGame(*players[!winner]);
-                }
-
-                break;
-            }
+            case 2: //nouveau joueur
+            playerList.push_back(new Player(modeles));
+        break;
         }
-    }
+    }while (!quit);
 
     ofstream pfichier(FPINFO, ios::out | ios::trunc);
 
@@ -100,6 +81,136 @@ int main()
     return 0;
 }
 
+int Game(const Sprites& sprites, PlayerInput& p_input, Player *players[2])
+{
+    BITMAP *buffer = create_bitmap(XSCREEN, YSCREEN);
+    bool endGame = false;
+    int gagnant = -1;
+
+    p_input.dragging = false;
+    p_input.prevClick = false;
+
+    while (!endGame)
+    {
+        for (int i=0;i<2;i++)
+        {
+            players[i]->StartTurn(*players[!i]);
+
+            p_input.whoTurn = i;
+
+            players[i]->Turn(*players[!i], buffer, sprites, p_input);
+
+            if (key[KEY_ESC])
+            {
+                cout << endl << "Pressed ESC!!!!!" << endl;
+                endGame = true;
+                break;
+            }
+
+            players[i]->EndTurn(*players[!i]);
+
+            if (players[0]->GetDead() || players[1]->GetDead())
+            {
+                endGame = true;
+                cout << endl << "partie terminée!!" << endl;
+
+                if (players[0]->GetDead() && players[1]->GetDead())
+                   cout << "\x1B[36m FELICITATIONS VOUS AVEZ RÉUSSI À FAIRE UN MATCH NUL!!!!!! \x1B[0m" << endl;
+                else
+                {
+                    gagnant = players[0]->GetDead();
+                    cout << "Le joueur " << (!gagnant?"1":"2") << " a gagné!!" << endl;
+
+                    players[gagnant]->WinGame(*players[!gagnant]);
+                }
+
+                break;
+            }
+        }
+    }
+
+    destroy_bitmap(buffer);
+
+    return gagnant;
+}
+
+int choix(int type)
+{
+    int maxChoix = 1, rep;
+    cout << endl << endl;
+
+    cout << "0\tRetours" << endl;
+    switch (type)
+    {
+        default:
+        case 0: //menu principal
+        maxChoix = 3;
+        cout << "1\tNouvelle Partie" << endl;
+        cout << "2\tCréer un nouveau joueur" << endl;
+        cout << "3\tMagasin (ne marche pas encore)" << endl;
+    break;
+    }
+
+    do{
+        cin >> rep;
+    } while (rep<0 || rep>=maxChoix);
+
+    return rep;
+}
+
+bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2])
+{
+    Player *previous = nullptr;
+    for (int i=0;i<2;i++)
+    {
+        cout << endl << "Choose player " << i << endl;
+
+        int j=0;
+        for (const auto& elem : playerList)
+        {
+            cout << endl << j << "\t" << elem->GetNom();
+            j++;
+        }
+        cout << endl;
+
+        bool works = false;
+
+        do{
+            int currNum;
+            Player *currPlayer;
+            cin >> currNum;
+
+            try{
+                currPlayer = playerList.at(currNum);
+
+                if (currPlayer==previous) //on compare le pointeur, pas la carte elle meme
+                {
+                    works = false;
+                    cout << endl << "this is the player 1" << endl;
+                }
+                else
+                {
+                    works = true;
+                    players[i] = currPlayer;
+                    previous = currPlayer;
+                }
+            }
+            catch (const out_of_range& e)
+            {
+                cout << endl << "The player that you asked for doesn't exist";
+                works = false;
+            }
+        }while (!works);
+    }
+
+    cout << endl << endl << "Player 1 choose your deck" << endl;
+    players[0]->NewGame();
+
+    cout << endl << endl << "Player 2 choose your deck" << endl;
+    players[1]->NewGame();
+
+    return true;
+}
 
 void load_sprites(Sprites& sprites)
 {

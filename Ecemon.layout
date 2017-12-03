@@ -2,119 +2,331 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="include/ModeleSpecial.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Cards/Flower.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="350" topLine="0" />
+			<Cursor1 position="329" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/Carte.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Move.cpp" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="107" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/ModeleCarte.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="355" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="819" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="src/Player.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2057" topLine="77" />
-		</Cursor>
-	</File>
-	<File name="include/Collection.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="387" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/Creature.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="316" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/Special.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="93" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/ModeleEnergie.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="754" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/Carte.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="680" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/Energie.cpp" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="278" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include/defines.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5027" topLine="165" />
-		</Cursor>
-	</File>
-	<File name="include/Energie.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="680" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/ModeleEnergie.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="126" topLine="0" />
+			<Cursor1 position="1340" topLine="39" />
 		</Cursor>
 	</File>
 	<File name="include/Player.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1415" topLine="7" />
+			<Cursor1 position="1611" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="src/ModeleCarte.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/ModeleCarte.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="170" topLine="0" />
+			<Cursor1 position="808" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Creature.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="src/Carte.cpp" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/Collection.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="204" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/ModeleSpecial.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="652" topLine="0" />
+			<Cursor1 position="282" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src/Special.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="590" topLine="0" />
+			<Cursor1 position="570" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/ModeleCreature.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Player.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1865" topLine="0" />
+			<Cursor1 position="2559" topLine="9" />
+		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+			<Collapse line="11" />
+			<Collapse line="16" />
+			<Collapse line="21" />
+			<Collapse line="28" />
+			<Collapse line="32" />
+			<Collapse line="37" />
+			<Collapse line="53" />
+			<Collapse line="59" />
+			<Collapse line="67" />
+			<Collapse line="72" />
+			<Collapse line="77" />
+			<Collapse line="83" />
+			<Collapse line="89" />
+			<Collapse line="98" />
+			<Collapse line="104" />
+			<Collapse line="108" />
+			<Collapse line="125" />
+			<Collapse line="136" />
+			<Collapse line="141" />
+			<Collapse line="164" />
+			<Collapse line="169" />
+			<Collapse line="179" />
+			<Collapse line="187" />
+			<Collapse line="197" />
+			<Collapse line="203" />
+			<Collapse line="214" />
+			<Collapse line="218" />
+			<Collapse line="220" />
+			<Collapse line="228" />
+			<Collapse line="230" />
+			<Collapse line="238" />
+			<Collapse line="240" />
+			<Collapse line="246" />
+			<Collapse line="248" />
+			<Collapse line="252" />
+			<Collapse line="261" />
+			<Collapse line="263" />
+			<Collapse line="265" />
+			<Collapse line="276" />
+			<Collapse line="279" />
+			<Collapse line="282" />
+			<Collapse line="292" />
+			<Collapse line="322" />
+			<Collapse line="324" />
+			<Collapse line="329" />
+			<Collapse line="331" />
+			<Collapse line="335" />
+			<Collapse line="349" />
+			<Collapse line="354" />
+			<Collapse line="358" />
+			<Collapse line="372" />
+			<Collapse line="378" />
+			<Collapse line="380" />
+			<Collapse line="390" />
+			<Collapse line="392" />
+			<Collapse line="402" />
+			<Collapse line="407" />
+			<Collapse line="412" />
+			<Collapse line="418" />
+			<Collapse line="421" />
+			<Collapse line="431" />
+			<Collapse line="440" />
+			<Collapse line="444" />
+			<Collapse line="446" />
+			<Collapse line="449" />
+			<Collapse line="452" />
+			<Collapse line="471" />
+			<Collapse line="483" />
+			<Collapse line="485" />
+			<Collapse line="488" />
+			<Collapse line="501" />
+			<Collapse line="510" />
+			<Collapse line="515" />
+			<Collapse line="531" />
+			<Collapse line="533" />
+			<Collapse line="540" />
+			<Collapse line="542" />
+			<Collapse line="547" />
+			<Collapse line="549" />
+			<Collapse line="556" />
+			<Collapse line="558" />
+			<Collapse line="563" />
+			<Collapse line="569" />
+			<Collapse line="577" />
+			<Collapse line="597" />
+			<Collapse line="599" />
+			<Collapse line="603" />
+			<Collapse line="606" />
+			<Collapse line="608" />
+			<Collapse line="610" />
+			<Collapse line="615" />
+			<Collapse line="624" />
+			<Collapse line="628" />
+			<Collapse line="631" />
+			<Collapse line="640" />
+			<Collapse line="648" />
+			<Collapse line="666" />
+			<Collapse line="677" />
+			<Collapse line="683" />
+			<Collapse line="690" />
+			<Collapse line="703" />
+			<Collapse line="709" />
+			<Collapse line="735" />
+			<Collapse line="745" />
+			<Collapse line="747" />
+			<Collapse line="763" />
+		</Folding>
+	</File>
+	<File name="include/defines.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1021" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Move.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Cards/Flower.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1492" topLine="54" />
+			<Cursor1 position="355" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include/ModeleCreature.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Cards/Pow.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1404" topLine="6" />
+			<Cursor1 position="255" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/ModeleSpecial.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="849" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/ModeleEnergie.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="597" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Carte.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="478" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/ModeleCreature.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1029" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="include/Energie.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="177" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/ModeleCreature.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1514" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Energie.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="278" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Collection.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="855" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="10" />
+			<Collapse line="12" />
+			<Collapse line="19" />
+			<Collapse line="28" />
+			<Collapse line="34" />
+			<Collapse line="40" />
+			<Collapse line="42" />
+			<Collapse line="46" />
+			<Collapse line="52" />
+			<Collapse line="55" />
+			<Collapse line="57" />
+			<Collapse line="65" />
+			<Collapse line="67" />
+			<Collapse line="69" />
+			<Collapse line="80" />
+			<Collapse line="87" />
+			<Collapse line="91" />
+			<Collapse line="97" />
+			<Collapse line="117" />
+			<Collapse line="119" />
+		</Folding>
+	</File>
+	<File name="include/ModeleCarte.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="594" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/GreenShroom.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="400" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1244" topLine="36" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="107" />
+			<Collapse line="116" />
+			<Collapse line="118" />
+			<Collapse line="129" />
+			<Collapse line="165" />
+			<Collapse line="172" />
+			<Collapse line="174" />
+			<Collapse line="181" />
+			<Collapse line="185" />
+			<Collapse line="192" />
+			<Collapse line="197" />
+			<Collapse line="206" />
+			<Collapse line="216" />
+			<Collapse line="217" />
+			<Collapse line="221" />
+			<Collapse line="232" />
+			<Collapse line="243" />
+		</Folding>
+	</File>
+	<File name="src/ModeleSpecial.cpp" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="733" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="include/Collection.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="608" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/Coin.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="337" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/ModeleEnergie.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="245" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/RedShroom.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="382" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/RedShroom.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="346" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/Star.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="316" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/GreenShroom.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="358" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Creature.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="938" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="Cards/Pow.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="310" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Creature.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/Star.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="337" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Cards/Coin.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="316" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Special.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="838" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
