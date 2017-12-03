@@ -28,7 +28,7 @@ void Carte::Detail(BITMAP *fond, PlayerInput& p_input, const Sprites& sprites)
     rectfill(fenetre, XBRETOUR - XFENETRE, YBRETOUR - YFENETRE, XBRETOUR+WBRETOUR - XFENETRE, YBRETOUR+HBRETOUR - YFENETRE, COL_BRIDGE);
 
     //assemble la fenetre (drawsprite la carte, affiche en grand le nom et la description)
-    textprintf_ex(fenetre, font, 60 + XTEXT, 50 + 1, BLANC, -1, "%s", GetModele().GetNom().c_str());    //nom
+    textprintf_ex(fenetre, font, 100, 50 + 1, BLANC, -1, "%s", GetModele().GetNom().c_str());    //nom
 
     vector<string>& description = GetModele().GetDescription();                                         //descirption
     for (int i=0;i<description.size();i++) //doing this as for an array cus we need the counter

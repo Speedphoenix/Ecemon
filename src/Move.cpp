@@ -76,22 +76,40 @@ void Move::Read_file(istream& fichier)
 }
 
 
-///Ajouter la consomation
 void Move::Attack(Player& ally, Player& enemy, int who)
 {
-    if (who==-1)
-    {
-        enemy.TakeDamage(m_Damage);
-    }
-    else
-    {
-        int retenue = enemy.GetActive(who)->TakeDamage(m_Damage);
+    Domaines& fuel = ally.GetCurrentEnergy();
 
-        if (retenue)
+    //check pour voir si y'a assez d'energie
+    bool canAttack = true;
+    for (int i=0;i<NBDOMAINE;i++)
+    {
+        if (fuel.value[i]<m_Consomation.value[i])
+            canAttack = false;
+    }
+
+    if (canAttack)
+    {
+        if (who==-1)
         {
-            enemy.TakeDamage(retenue);
+            enemy.TakeDamage(m_Damage);
+        }
+        else
+        {
+            int retenue = enemy.GetActive(who)->TakeDamage(m_Damage);
+
+            if (retenue)
+            {
+                enemy.TakeDamage(retenue);
+            }
+        }
+
+        for (int i=0;i<NBDOMAINE;i++)
+        {
+            fuel.value[i] -= m_Consomation.value[i];
         }
     }
+
 }
 
 void Move::SetConsomation(Domaines conso)

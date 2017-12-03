@@ -731,7 +731,7 @@ void Player::MoveHand(PlayerInput& p_input)
 void Player::Draw(BITMAP *dest, bool turn, const Sprites& sprites, const PlayerInput& p_input)
 {
     BITMAP *rep = create_bitmap(dest->w, dest->h);
-    rectfill(rep, 0, 0, dest->w, dest->h, BLANC);
+    blit(sprites.fond, rep, XPLAYERSIDE, turn?YPLAYERSIDE:0, 0, 0, dest->w, dest->h);
 
     int  x, y;
 
@@ -759,7 +759,7 @@ void Player::Draw(BITMAP *dest, bool turn, const Sprites& sprites, const PlayerI
 
             draw_sprite(rep, m_Active[i]->GetCardFront(), x, y);
 
-            textprintf_ex(rep, font, x + XTEXT, y + 1, NOIR, -1, " %dHP", m_Active[i]->GetHP());
+            textprintf_ex(rep, font, x + 19, y +30, NOIR, -1, "%d", m_Active[i]->GetHP());
             //textprintf_ex(rep, font, x + XTEXT + 4, y + YACTION + 6, NOIR, -1, "%dDMG", m_Active[i]->GetAD());
         }
     }
@@ -775,7 +775,7 @@ void Player::Draw(BITMAP *dest, bool turn, const Sprites& sprites, const PlayerI
         {
             draw_sprite(rep, m_Special[i]->GetCardFront(), x, y);
 
-            textprintf_ex(rep, font, x + XTEXT-7, y + 1, NOIR, -1, " %dturns", m_Special[i]->GetActiveLeft());
+            textprintf_ex(rep, font, x + 61, y + 22, NOIR, -1, "%d", m_Special[i]->GetActiveLeft());
         }
     }
 
@@ -806,6 +806,11 @@ void Player::Draw(BITMAP *dest, bool turn, const Sprites& sprites, const PlayerI
     draw_sprite(rep, sprites.buttonPlayer, XPLAYER, YPLAYER);
 
     textprintf_ex(rep, font, XPLAYER, YPLAYER + HPLAYER + MARGIN, NOIR, -1, "HP: %d/%d", m_HP, m_MaxHP);
+    textprintf_ex(rep, font, XPLAYER, YPLAYER + HPLAYER + 2*MARGIN, VERT, -1, "Shroom energy: %d", m_CurrentEnergy.value[0]);
+    textprintf_ex(rep, font, XPLAYER, YPLAYER + HPLAYER + 3*MARGIN, COL_ROCK, -1, "Cave energy: %d", m_CurrentEnergy.value[1]);
+    textprintf_ex(rep, font, XPLAYER, YPLAYER + HPLAYER + 4*MARGIN, NOIR, -1, "Cloud energy: %d", m_CurrentEnergy.value[2]);
+    textprintf_ex(rep, font, XPLAYER, YPLAYER + HPLAYER + 5*MARGIN, ROUGE, -1, "Bowser energy: %d", m_CurrentEnergy.value[3]);
+
 
     if (turn)
     {

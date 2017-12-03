@@ -90,6 +90,7 @@ class Player
         Special* GetSpecial(int num) { return m_Special[num]; }
         Energie* GetEnergie() { return m_Energie.empty()?nullptr:m_Energie.top(); }
         Carte* GetCimetiere() { return m_Cimetiere.empty()?nullptr:m_Cimetiere.top(); }
+        Domaines& GetCurrentEnergy() { return m_CurrentEnergy; }
 
         std::string GetNom() { return m_Nom; }
         void SetNom(std::string val) { m_Nom = val; }

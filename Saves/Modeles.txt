@@ -81,7 +81,7 @@ POW Block
 2
 He is often seen as rude from others, but can't help it.
 It's not like they are getting used that way, right?
-speciales/thwomp.bmp
+speciales/bloc pow.bmp
 3
 
 2
@@ -90,7 +90,7 @@ Green Shroom
 2
 Just comes, leaves a life to the taker and..
 Oh no! They ate him!
-speciales/carapace verte.bmp
+speciales/champi vert.bmp
 3
 
 1
@@ -102,9 +102,9 @@ creatures/bowser.bmp
 10
 2
 1
-0 0 0 0
+0 0 0 1
 1
-0 0 0 0
+0 5 0 0
 
 1
 10

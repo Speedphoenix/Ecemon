@@ -142,6 +142,9 @@ struct Domaines{
 #define WDESCRI 84
 #define HDESCRI 68
 
+#define XTHP
+#define XTEXT 37
+
 //pour la fenetre de déscription d'une carte, dans Carte.cpp
 #define XFENETRE 105
 #define YFENETRE 140

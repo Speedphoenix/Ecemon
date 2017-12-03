@@ -12,8 +12,7 @@ ModeleCreature::ModeleCreature()
 
     rectfill(m_CardFront, XDESCRI, YDESCRI, XDESCRI + WDESCRI, YDESCRI + HDESCRI, ROUGE);
 
-    for (int i=0;i<MAXMOVES;i++)
-        textprintf_ex(m_CardFront, font, XTEXT + 4, YACTION + i*HATTACK + 6, NOIR, -1, "%dDMG", m_Moves[i].GetDamage());
+
 
 }
 
@@ -23,6 +22,27 @@ ModeleCreature::ModeleCreature(int cardNum, istream& fichier)
 {
     Read_file(fichier);
 
+    textprintf_ex(m_CardFront, font, 67, 68, NOIR, -1, "%d", m_Moves[0].GetDamage());
+    for (int i=0;i<NBDOMAINE;i++)
+    {
+        if (m_Moves[0].GetConsomation().value[i])
+        {
+            int col = i==0?VERT:i==1?COL_ROCK:i==2?NOIR:ROUGE;
+            textprintf_ex(m_CardFront, font, 42, 68, col, -1, "%d", m_Moves[0].GetConsomation().value[i]);
+
+        }
+    }
+
+    textprintf_ex(m_CardFront, font, 67, 96, NOIR, -1, "%d", m_Moves[1].GetDamage());
+    for (int i=0;i<NBDOMAINE;i++)
+    {
+        if (m_Moves[1].GetConsomation().value[i])
+        {
+            int col = i==0?VERT:i==1?COL_ROCK:i==2?NOIR:ROUGE;
+            textprintf_ex(m_CardFront, font, 42, 96, col, -1, "%d", m_Moves[1].GetConsomation().value[i]);
+
+        }
+    }
 }
 
 ModeleCreature::~ModeleCreature()
