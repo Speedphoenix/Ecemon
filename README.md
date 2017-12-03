@@ -27,7 +27,7 @@ $$ Truc fait mais en mode console
 - [x] 5 modèles de cartes créatures avec chacune au moins 2 attaques
 - [ ] *6 modèles de cartes spéciales permettant d'altérer les mécanismes par défaut du jeu*
 - [ ] $$ Nombre indéfini de joueurs, pouvoir ajouter des joueurs...
-- [ ] **Pouvoir acheter des cartes pour faire évoluer les collections des joueurs**
+- [ ] $$Pouvoir acheter des cartes pour faire évoluer les collections des joueurs
 - [x] Les données des joueurs et leur collections sont sauvées sur fichier (on les retrouve)
 - [ ] $$ Organiser des matchs entre joueurs au choix
 - [ ] $$ Phase de sélection des decks (à partir des collections de chacun)
