@@ -1,0 +1,255 @@
+17
+
+
+1
+0
+Mario
+2
+Mario has always been the hero. He has the best
+experience as a plumber to do the job
+creatures\mario.bmp
+6
+2
+2
+0 0 0 0
+3
+0 0 0 0
+
+2
+1
+Red Shroom
+4
+Shroom has always been the first in line to be eaten.
+Will it remain that way?
+This card increases the damage of one card by 2 for 
+one turn as long as this card is active
+speciales\champi rouge.bmp
+3
+
+0
+2
+Warp Pipe
+2
+Very kind and helpful.
+It has yet know the existence of his other end though
+energies\tuyau.bmp
+0
+3
+
+1
+3
+Luigi
+2
+After being oppressed for being the second bro, 
+Luigi is now back. Stronger.
+creatures\luigi.bmp
+6
+2
+3
+0 0 0 0
+2
+0 0 0 0
+
+2
+4
+Fire Flower
+4
+The Fire Flower used to feel dejected about only coming
+after a Shroom. Now's the time to heat things up.
+This card will burn every active enemy card and player 
+for one HP each turn that the flower is active.
+speciales\fleur de feu.bmp
+3
+
+2
+5
+Coin
+4
+Just a coin. It just wanted to be of use but somehow 
+always fell short.
+This card will heal an allied card for 3 HP 
+when active
+speciales\piece.bmp
+1
+
+2
+6
+Super Star
+3
+The real Star of the game. Its radiance comes from the 
+admiration people give it
+This card will revive the top-most card on the graveyard
+speciales\etoile.bmp
+1
+
+2
+7
+POW Block
+3
+He is often seen as rude from others, but can't help it.
+It's not like they are getting used that way, right?
+This card will stun every enemy active card for one turn
+speciales\bloc pow.bmp
+1
+
+2
+8
+Green Shroom
+3
+Just comes, leaves a heart to the taker and..
+Oh no! They ate him!
+This card will heal every allied card for 2HP every turn
+speciales\champi vert.bmp
+2
+
+1
+9
+Bowser
+1
+DESCRIPTION
+creatures\bowser.bmp
+5
+2
+3
+0 0 0 1
+4
+0 5 0 0
+
+1
+10
+Lakitu
+1
+DESCRIPTION
+creatures\lakitu.bmp
+5
+2
+2
+0 0 0 0
+4
+0 0 0 0
+
+1
+11
+Paratroopa
+1
+DESCRIPTION
+creatures\paratroopa.bmp
+7
+2
+2
+0 0 0 0
+2
+0 0 0 0
+
+0
+12
+Cave Pipe
+2
+Not so kind and selfish.
+He always wonders why people keep coming out of him...
+energies\cave.bmp
+1
+3
+
+0
+13
+Smiling Cloud
+1
+They say the Smiling cloud got this high by smiling...
+energies\nuage.bmp
+2
+3
+
+0
+14
+Magma
+3
+The Magma was trained hard by Bowser, try to cover as 
+much as possible and reap anyone who comes in contact...
+even his master.
+energies\lave.bmp
+3
+3
+
+1
+15
+King Boo
+1
+DESCRIPTION
+creatures\roiboo.bmp
+6
+2
+2
+0 0 0 0
+2
+0 0 0 0
+
+1
+16
+Dry Bones
+1
+DESCRIPTION
+creatures\skelerex.bmp
+7
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+1
+17
+Wario
+1
+DESCRIPTION
+creatures\wario.bmp
+3
+2
+3
+0 0 0 0
+4
+0 0 0 0
+
+
+
+
+///for here on this will not be read by the program (nor will it be overridden)
+example of Modeles.txt file:
+	//NOTE:
+	//we will probably add the file path to the info
+
+3 	//number of card models
+
+
+1 	//cardType, here creature
+0	//cardNum, different for each card
+Mario	//name
+1	//the number of lines in the description
+descri	//first line of description. max 57 chars per line
+muaha	//second line of description.
+Res\somebitmap.bmp //filepath of the image_______________///these are the same for every type of card
+10	//hp
+2	//number of moves
+1	//damage of the first move
+0 0 0 0	//consumption of the move for each energy domain
+2	//damage of second move...
+0 0 0 0
+
+2	//cardtype, here special
+1
+Shroom
+1
+Shroom's description
+Res\somebitmap.bmp
+3	//number of active turns
+
+0	//cardtype, here energy
+2
+Fire Energy
+1
+Fire Energy's description
+Res\somebitmap.bmp
+1	//domain of the energy
+3	//amount of energy	///might be changed to 4-value domains like for the moves
+
+
