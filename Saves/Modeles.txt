@@ -1,4 +1,4 @@
-15
+17
 
 
 1
@@ -7,6 +7,7 @@ Mario
 2
 Mario has always been the hero. He has the best
 experience as a plumber to do the job
+creatures/mario.bmp
 10
 2
 1
@@ -20,14 +21,16 @@ Red Shroom
 2
 Shroom has always been the first in line to be eaten.
 Will it remain that way?
+speciales/champi rouge.bmp
 2
 
 0
 2
 Warp Pipe
 2
-Very kind and usefull.
+Very kind and helpful.
 It has yet know the existence of his other end though
+energies/tuyau.bmp
 0
 3
 
@@ -37,6 +40,7 @@ Luigi
 2
 After being oppressed for being the second bro, 
 Luigi is now back. Stronger.
+creatures/luigi.bmp
 10
 2
 3
@@ -50,6 +54,7 @@ Fire Flower
 2
 The Fire Flower used to feel dejected about only coming
 after a Shroom. Now's the time to heat things up.
+speciales/fleur de feu.bmp
 3
 
 2
@@ -58,6 +63,7 @@ Coin
 2
 Just a coin. It just wanted to be of use but somehow 
 always fell short.
+speciales/piece.bmp
 1
 
 2
@@ -66,6 +72,7 @@ Super Star
 2
 The real Star of the game. Its radiance comes from the 
 admiration people give it
+speciales/etoile.bmp
 3
 
 2
@@ -74,6 +81,7 @@ POW Block
 2
 He is often seen as rude from others, but can't help it.
 It's not like they are getting used that way, right?
+speciales/thwomp.bmp
 3
 
 2
@@ -82,13 +90,15 @@ Green Shroom
 2
 Just comes, leaves a life to the taker and..
 Oh no! They ate him!
+speciales/carapace verte.bmp
 3
 
 1
 9
-CREATURE N3
+Bowser
 1
 DESCRIPTION
+creatures/bowser.bmp
 10
 2
 1
@@ -98,9 +108,10 @@ DESCRIPTION
 
 1
 10
-CREATURE N4
+Lakitu
 1
 DESCRIPTION
+creatures/lakitu.bmp
 10
 2
 1
@@ -110,9 +121,10 @@ DESCRIPTION
 
 1
 11
-CREATURE N5
+Paratroopa
 1
 DESCRIPTION
+creatures/paratroopa.bmp
 10
 2
 1
@@ -122,9 +134,11 @@ DESCRIPTION
 
 0
 12
-Cave Rock
-1
-Just a rock
+Cave Pipe
+2
+Not so kind and selfish.
+He always wonders why people keep coming out of him...
+energies/cave.bmp
 1
 3
 
@@ -133,6 +147,7 @@ Just a rock
 Smiling Cloud
 1
 They say the Smiling cloud got this high by smiling...
+energies/nuage.bmp
 2
 2
 
@@ -142,9 +157,49 @@ Magma
 3
 The Magma was trained hard by Bowser, try to cover as 
 much as possible and reap anyone who comes in contact...
-even him.
+even his master.
+energies/lave.bmp
 3
 1
+
+1
+15
+King Boo
+1
+DESCRIPTION
+creatures/roiboo.bmp
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+1
+16
+Dry Bones
+1
+DESCRIPTION
+creatures/skelerex.bmp
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
+
+1
+17
+Wario
+1
+DESCRIPTION
+creatures/wario.bmp
+10
+2
+1
+0 0 0 0
+1
+0 0 0 0
 
 
 
@@ -162,7 +217,8 @@ example of Modeles.txt file:
 Mario	//name
 1	//the number of lines in the description
 descri	//first line of description. max 57 chars per line
-muaha	//second line of description.____________________________///these 4 are the same for every type of card
+muaha	//second line of description.
+Res/somebitmap.bmp //filepath of the image_______________///these are the same for every type of card
 10	//hp
 2	//number of moves
 1	//damage of the first move
@@ -175,6 +231,7 @@ muaha	//second line of description.____________________________///these 4 are th
 Shroom
 1
 Shroom's description
+Res/somebitmap.bmp
 3	//number of active turns
 
 0	//cardtype, here energy
@@ -182,6 +239,7 @@ Shroom's description
 Fire Energy
 1
 Fire Energy's description
+Res/somebitmap.bmp
 1	//domain of the energy
 3	//amount of energy	///might be changed to 4-value domains like for the moves
 

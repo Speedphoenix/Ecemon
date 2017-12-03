@@ -21,6 +21,7 @@ class Player
         Domaines m_CurrentEnergy;           //la quantité d'énergie disponible pour chaque domaine
         int m_HP;
         int m_MaxHP;
+        int m_Money;
 
         /** une fonction pour avoir l'action du joueur. */
         bool InputCheck(PlayerInput& p_input, Player& opponent);
@@ -41,7 +42,7 @@ class Player
         virtual ~Player();
 
         /** met le joueur en place pour une nouvelle partie (battre le deck et placer l'enjeu) */
-        void NewGame();
+        void NewGame(bool askChoose);
 
         /** dessine un demi écran pour le joueur en cours.
         turn est vraie si c'est au tour de ce joueur */
@@ -80,6 +81,9 @@ class Player
 
         /** remet à MaxHP l'HP du joueur */
         void Reset();
+
+        /** pour pouvoir acheter une carte de plus et l'ajouter à la collection */
+        void Shopping(std::map<int, ModeleCarte *> modeles);
 
         //getters/setters
         Creature* GetActive(int num) { return m_Active[num]; }

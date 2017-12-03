@@ -25,7 +25,7 @@ Player::Player()
 }
 
 Player::Player(map<int, ModeleCarte *> modeles)
-    :m_HP(20), m_MaxHP(20)
+    :m_HP(20), m_MaxHP(20), m_Money(0)
 {
     m_Enjeu = nullptr;
 
@@ -86,6 +86,7 @@ void Player::WriteFile(ostream& fichier)
 {
     fichier << endl  << m_Nom << endl;
     fichier << m_MaxHP << endl;
+    fichier << m_Money << endl;
 
     m_Collection.WriteFile(fichier);
     fichier << endl;
@@ -97,6 +98,7 @@ void Player::ReadFile(istream& fichier, map<int, ModeleCarte *> modeles)
     getline(fichier, m_Nom);
     fichier >> m_MaxHP;
     m_HP = m_MaxHP;
+    fichier >> m_Money;
 
     try{
         m_Collection.ReadFile(fichier, modeles);
@@ -143,15 +145,17 @@ void Player::NewCol(map<int, ModeleCarte *> modeles)
     }
 }
 
-void Player::NewGame()
+void Player::NewGame(bool askChoose)
 {
-    m_Collection.CreateDeck(m_Deck);
+    if (askChoose)
+        m_Collection.CreateDeck(m_Deck);
+    else
+        m_Collection.CreateDeck(m_Deck, 0);
 
     m_Enjeu = m_Deck.front();
     m_Deck.pop();
 
     m_Collection.RemoveCard(m_Enjeu); //l'enjeu n'exeiste que en jeu
-
 }
 
 Carte *Player::LoseEnjeu()
@@ -167,6 +171,7 @@ Carte *Player::LoseEnjeu()
 void Player::WinGame(Player& loser)
 {
     m_Collection.AddCard(loser.LoseEnjeu());
+    m_Money++;
 }
 
 void Player::Reset()
@@ -204,6 +209,35 @@ void Player::Reset()
     }
 
     m_Collection.Reset();
+}
+
+void Player::Shopping(map<int, ModeleCarte *> modeles)
+{
+    cout << endl << "You have " << m_Money << " money, you can" << (m_Money?"":"'t") << " buy another card" << endl;
+
+    if (m_Money)
+    {
+        cout << "Choose a card" << endl;
+        for (const auto& elem : modeles)
+            cout << elem.second->GetCardNum() << "\t" << elem.second->GetNom() << endl;
+
+        bool works = false;
+        do{
+            int Num;
+            cin >> Num;
+
+            try{
+                m_Collection.AddNewCard(modeles.at(Num));
+                works = true;
+            }
+            catch (const out_of_range& e)
+            {
+                cout << endl << "This/a card that you asked for doesn't exist" << endl;
+                works = false;
+            }
+        } while (!works);
+        m_Money--;
+    }
 }
 
 

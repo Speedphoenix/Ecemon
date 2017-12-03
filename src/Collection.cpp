@@ -15,6 +15,23 @@ Collection::~Collection()
     }
 }
 
+void Collection::CreateDeck(queue<Carte *>& deck, int a)
+{
+    vector<Carte *> newOne;
+
+    for (int i=0;i<DECKSIZE;i++)
+    {
+        newOne.push_back(m_Cartes.at(i));
+    }
+
+    random_shuffle (newOne.begin(), newOne.end());
+
+    while (!deck.empty()) //on vide le deck précédent (sais jamais)
+        deck.pop();
+
+    for (const auto& elem : newOne)
+        deck.push(elem);
+}
 
 void Collection::CreateDeck(queue<Carte *>& deck)
 {

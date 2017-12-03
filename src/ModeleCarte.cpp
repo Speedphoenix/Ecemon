@@ -35,11 +35,14 @@ void ModeleCarte::Read_file(istream& fichier)
     int lineNum;
     fichier >> lineNum;
     fichier.ignore(1, '\n');
+    string inter;
     for (int i=0;i<lineNum;i++)
     {
-        string inter;
         getline(fichier, inter);
         m_Description.push_back(inter);
     }
+
+    getline(fichier, inter);
+    m_CardFront = load_bitmap(inter.c_str(), NULL); ERR_CHARG(m_CardFront)
 }
 

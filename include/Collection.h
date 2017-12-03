@@ -20,6 +20,7 @@ class Collection
 
         //void Fill(std::map<int, ModeleCarte *> cardList); //pour remplir depuis l'utilisateur
         void CreateDeck(std::queue<Carte *>& deck); //pour créer un deck depuis la collection
+        void CreateDeck(std::queue<Carte *>& deck, int a); //pour créer un deck depuis la collection sans l'aide du joueur
         void AddCard(Carte *ajout);
 
         /** crée et ajoute une nouvelle carte */

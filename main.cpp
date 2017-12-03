@@ -13,8 +13,8 @@ void init_alleg(int sizex, int sizey);
 void load_sprites(Sprites& sprites);
 void load_modeles(map<int, ModeleCarte*>& dest);
 void load_players(vector<Player *>& players, map<int, ModeleCarte *> modeles);
-int choix(int type = 0);
-bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2]);
+int choix(int type, vector<Player *> playerList);
+bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2], bool askChoose);
 int Game(const Sprites& sprites, PlayerInput& p_input, Player *players[2]);
 
 int main()
@@ -38,14 +38,14 @@ int main()
 
     bool quit = false;
     do{
-        switch (choix(0))
+        switch (choix(0, playerList))
         {
             case 0:
             quit = true;
         break;
 
             case 1: //nouvelle partie
-            if (nouvellePartie(modeles, playerList, players))
+            if (nouvellePartie(modeles, playerList, players, true))
             {
                 int gagnant = Game(sprites, p_input, players);
 
@@ -57,6 +57,20 @@ int main()
 
             case 2: //nouveau joueur
             playerList.push_back(new Player(modeles));
+        break;
+
+            case 3:
+            playerList.at(choix(1, playerList))->Shopping(modeles);
+        break;
+
+            default: //pour ne pas avoir à rechoisir les decks à chaque fois
+            if (nouvellePartie(modeles, playerList, players, false))
+            {
+                int gagnant = Game(sprites, p_input, players);
+
+                players[0]->Reset();
+                players[1]->Reset();
+            }
         break;
         }
     }while (!quit);
@@ -134,20 +148,31 @@ int Game(const Sprites& sprites, PlayerInput& p_input, Player *players[2])
     return gagnant;
 }
 
-int choix(int type)
+int choix(int type, vector<Player *> playerList)
 {
     int maxChoix = 1, rep;
     cout << endl << endl;
 
-    cout << "0\tRetours" << endl;
     switch (type)
     {
         default:
         case 0: //menu principal
-        maxChoix = 3;
-        cout << "1\tNouvelle Partie" << endl;
-        cout << "2\tCréer un nouveau joueur" << endl;
-        cout << "3\tMagasin (ne marche pas encore)" << endl;
+        maxChoix = 5;
+        cout << "0\tLeave Game" << endl;
+        cout << "1\tNew Game" << endl;
+        cout << "2\tCreate a new player" << endl;
+        cout << "3\tShop" << endl;
+        cout << "4\tStart a game without choosing the deck" << endl;
+    break;
+
+        case 1: //choix d'un joueur
+        maxChoix = playerList.size() + 1;
+        int i = 0;
+        for (const auto& elem : playerList)
+        {
+            cout << i << "\t" << elem->GetNom() << endl;
+            i++;
+        }
     break;
     }
 
@@ -158,27 +183,19 @@ int choix(int type)
     return rep;
 }
 
-bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2])
+bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList, Player *players[2], bool askChoose)
 {
     Player *previous = nullptr;
     for (int i=0;i<2;i++)
     {
-        cout << endl << "Choose player " << i << endl;
-
-        int j=0;
-        for (const auto& elem : playerList)
-        {
-            cout << endl << j << "\t" << elem->GetNom();
-            j++;
-        }
-        cout << endl;
+        cout << endl << "Choose player " << (i+1) << endl;
 
         bool works = false;
 
         do{
             int currNum;
             Player *currPlayer;
-            cin >> currNum;
+            currNum = choix(1, playerList);
 
             try{
                 currPlayer = playerList.at(currNum);
@@ -203,11 +220,13 @@ bool nouvellePartie(map<int, ModeleCarte *> modeles, vector<Player *> playerList
         }while (!works);
     }
 
-    cout << endl << endl << "Player 1 choose your deck" << endl;
-    players[0]->NewGame();
+    if (askChoose)
+        cout << endl << endl << "Player 1 choose your deck" << endl;
+    players[0]->NewGame(askChoose);
 
-    cout << endl << endl << "Player 2 choose your deck" << endl;
-    players[1]->NewGame();
+    if (askChoose)
+        cout << endl << endl << "Player 2 choose your deck" << endl;
+    players[1]->NewGame(askChoose);
 
     return true;
 }

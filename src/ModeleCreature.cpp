@@ -23,14 +23,6 @@ ModeleCreature::ModeleCreature(int cardNum, istream& fichier)
 {
     Read_file(fichier);
 
-    //assemblage de la bitmap
-    m_CardFront = load_bitmap(FCARDT, NULL); ERR_CHARG(m_CardFront) ///À ENLEVER
-
-    rectfill(m_CardFront, XDESCRI, YDESCRI, XDESCRI + WDESCRI, YDESCRI + HDESCRI, ROUGE);
-
-    for (int i=0;i<MAXMOVES;i++)
-        textprintf_ex(m_CardFront, font, XTEXT + 4, YACTION + i*HATTACK + 6, NOIR, -1, "%dDMG", m_Moves[i].GetDamage());
-
 }
 
 ModeleCreature::~ModeleCreature()

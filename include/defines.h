@@ -27,8 +27,8 @@
 #define MAXSPECIAL 1
 #define MAXMOVES 2 //le nombre d'attaques max par créature
 
-#define DECKSIZE 20
-#define CSTARTSIZE 25
+#define DECKSIZE 11
+#define CSTARTSIZE 16
 
 #define NBDOMAINE 4
 
