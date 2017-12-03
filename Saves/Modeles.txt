@@ -11,9 +11,9 @@ creatures/mario.bmp
 6
 2
 2
-0 0 0 0
-3
-0 0 0 0
+2 0 0 0
+4
+0 4 0 0
 
 2
 1
@@ -34,7 +34,7 @@ Very kind and helpful.
 It has yet know the existence of his other end though
 energies/tuyau.bmp
 0
-3
+10
 
 1
 3
@@ -46,9 +46,9 @@ creatures/luigi.bmp
 6
 2
 3
-0 0 0 0
+0 0 3 0
 2
-0 0 0 0
+2 0 0 0
 
 2
 4
@@ -105,51 +105,56 @@ speciales/champi vert.bmp
 1
 9
 Bowser
-1
-DESCRIPTION
+2
+Bowser has always been the bad guy of the series. As such,
+he would always lose. Will e prevail this time?
 creatures/bowser.bmp
 5
 2
 3
-0 0 0 1
+0 2 0 0
 4
-0 5 0 0
+0 0 0 2
 
 1
 10
 Lakitu
-1
-DESCRIPTION
+3
+While people might have thought the life of a lakitu is 
+full of action and throwing spikes around, he actually 
+spends most of his days waiting for a player to pass by.
 creatures/lakitu.bmp
 5
 2
 2
-0 0 0 0
+0 0 1 0
 4
-0 0 0 0
+0 0 4 0
 
 1
 11
 Paratroopa
-1
-DESCRIPTION
+3
+These flying dudes always look so happy, yet players
+would inevitably jump on them. Could he finally find his
+revenge in this game?
 creatures/paratroopa.bmp
 7
 2
 2
-0 0 0 0
+2 0 0 0
 2
-0 0 0 0
+0 2 0 0
 
 0
 12
 Cave Pipe
 2
-Not so kind and selfish.
-He always wonders why people keep coming out of him...
+Not so kind, pretty selfish, and gets angry whe you come
+out of him. For the moment that's his biggest mystery.
 energies/cave.bmp
 1
-3
+10
 
 0
 13
@@ -158,7 +163,7 @@ Smiling Cloud
 They say the Smiling cloud got this high by smiling...
 energies/nuage.bmp
 2
-3
+8
 
 0
 14
@@ -169,46 +174,52 @@ much as possible and reap anyone who comes in contact...
 even his master.
 energies/lave.bmp
 3
-3
+6
 
 1
 15
 King Boo
-1
-DESCRIPTION
+4
+Ever since King Boo became the king he became very 
+restrained. He just couldn't go around scary players to 
+death anymore. he could only spend his days waiting in 
+the Main Hall.
 creatures/roiboo.bmp
 6
 2
 2
-0 0 0 0
-2
-0 0 0 0
+0 0 0 1
+4
+0 0 5 0
 
 1
 16
 Dry Bones
-1
-DESCRIPTION
+3
+While Dry Bones may seem like a victim he actually
+doesn't really care. He'll be back on foot and walking
+again before he knows it anyways
 creatures/skelerex.bmp
 7
 2
 1
-0 0 0 0
-1
-0 0 0 0
+0 1 0 0
+2
+0 0 0 1
 
 1
 17
 Wario
-1
-DESCRIPTION
+2
+Wario is only here to have fun and jump around really.
+No one even invited him in the first place
 creatures/wario.bmp
 3
 2
 3
-0 0 0 0
+0 0 0 2
 4
-0 0 0 0
+0 0 3 0
 
 
 
