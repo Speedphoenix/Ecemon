@@ -18,9 +18,11 @@ creatures/mario.bmp
 2
 1
 Red Shroom
-2
+4
 Shroom has always been the first in line to be eaten.
 Will it remain that way?
+This card increases the damage of one card by 2 for 
+one turn as long as this card is active
 speciales/champi rouge.bmp
 2
 
@@ -51,47 +53,54 @@ creatures/luigi.bmp
 2
 4
 Fire Flower
-2
+4
 The Fire Flower used to feel dejected about only coming
 after a Shroom. Now's the time to heat things up.
+This card will burn every active enemy card and player 
+for one HP each turn that the flower is active.
 speciales/fleur de feu.bmp
 3
 
 2
 5
 Coin
-2
+4
 Just a coin. It just wanted to be of use but somehow 
 always fell short.
+This card will heal an allied card for 3 HP 
+when active
 speciales/piece.bmp
 1
 
 2
 6
 Super Star
-2
+3
 The real Star of the game. Its radiance comes from the 
 admiration people give it
+This card will revive the top-most card on the graveyard
 speciales/etoile.bmp
-3
+1
 
 2
 7
 POW Block
-2
+3
 He is often seen as rude from others, but can't help it.
 It's not like they are getting used that way, right?
+This card will stun every enemy active card for one turn
 speciales/bloc pow.bmp
-3
+1
 
 2
 8
 Green Shroom
-2
-Just comes, leaves a life to the taker and..
-Oh no! They ate him!
-speciales/champi vert.bmp
 3
+Just comes, leaves a heart to the taker and..
+Oh no! They ate him!
+This card will heal every allied card for 2HP every turn
+speciales/champi vert.bmp
+2
 
 1
 9

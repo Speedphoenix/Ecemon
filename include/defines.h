@@ -18,6 +18,9 @@
 
 ///Gameplay/balance
 #define POWFREEZE 1 //nombre de tours que le pow freeze
+#define SHROOMHEAL 2
+#define SHROOMBUFF 2
+#define COINHEAL 3
 
 
 ///MAGIC NUMBERS AND ENUMS

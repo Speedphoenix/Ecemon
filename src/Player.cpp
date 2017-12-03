@@ -274,6 +274,18 @@ bool Player::GetDead()
     return true;
 }
 
+Carte* Player::PopCimetiere()
+{
+    if (m_Cimetiere.empty())
+        return nullptr;
+    else
+    {
+        Carte *rep = m_Cimetiere.top();
+        m_Cimetiere.pop();
+        return rep;
+    }
+}
+
 
 
 void Player::EndTurn(Player& enemy)

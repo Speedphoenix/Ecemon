@@ -38,6 +38,7 @@ class Creature : public Carte
         virtual BITMAP *GetCardFront();
 
         ModeleCarte& GetModele() { return m_Modele; }
+        Move& GetMove(int num) { return m_Moves[num]; }
 
         /** fait attaquer à la fin du tour */
         virtual void SetAttack(int who, int _move);

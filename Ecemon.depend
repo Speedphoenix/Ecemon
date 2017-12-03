@@ -7,7 +7,7 @@
 	<string>
 	<allegro.h>
 
-1512320305 /home/leonardo/Documents/Programmes/C++/Ecemon/include/defines.h
+1512322657 /home/leonardo/Documents/Programmes/C++/Ecemon/include/defines.h
 	<allegro.h>
 	<exception>
 	<algorithm>
@@ -29,11 +29,11 @@
 	"defines.h"
 	"ModeleCarte.h"
 
-1512250278 /home/leonardo/Documents/Programmes/C++/Ecemon/include/ModeleSpecial.h
+1512323518 /home/leonardo/Documents/Programmes/C++/Ecemon/include/ModeleSpecial.h
 	"defines.h"
 	"ModeleCarte.h"
 
-1512247745 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Creature.h
+1512322983 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Creature.h
 	"defines.h"
 	"Carte.h"
 	"ModeleCreature.h"
@@ -81,11 +81,11 @@
 	"Special.h"
 	"Player.h"
 
-1512317880 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Player.h
+1512322274 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Player.h
 	"defines.h"
 	"Collection.h"
 
-1512321165 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Player.cpp
+1512322340 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Player.cpp
 	"Player.h"
 
 1511716992 /home/leonardo/Documents/Programmes/C++/Ecemon/include/Move.h
@@ -110,21 +110,21 @@
 1512315156 source:/home/leonardo/Documents/Programmes/C++/Ecemon/src/Collection.cpp
 	"Collection.h"
 
-1512250407 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Coin.cpp
+1512323437 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Coin.cpp
 	"Coin.h"
 	"Player.h"
 
 1512250410 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Coin.h
 	<ModeleSpecial.h>
 
-1512250433 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Flower.cpp
+1512321864 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Flower.cpp
 	"Flower.h"
 	"Player.h"
 
 1512250423 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Flower.h
 	<ModeleSpecial.h>
 
-1512250448 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/GreenShroom.cpp
+1512322769 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/GreenShroom.cpp
 	"GreenShroom.h"
 	"Player.h"
 
@@ -138,14 +138,14 @@
 1512250470 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Pow.h
 	<ModeleSpecial.h>
 
-1512250514 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/RedShroom.cpp
+1512323235 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/RedShroom.cpp
 	"RedShroom.h"
 	"Player.h"
 
 1512250502 /home/leonardo/Documents/Programmes/C++/Ecemon/Cards/RedShroom.h
 	<ModeleSpecial.h>
 
-1512250376 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Star.cpp
+1512322375 source:/home/leonardo/Documents/Programmes/C++/Ecemon/Cards/Star.cpp
 	"Star.h"
 	"Player.h"
 

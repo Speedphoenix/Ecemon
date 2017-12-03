@@ -5,12 +5,15 @@
 #include "ModeleCarte.h"
 
 class Player;
+class Creature;
 
 /** La structure qui garde les données de l'action d'une carte entre la fin et le début du tour */
 struct KeepSpecial{
     int aimType;
     int aimNum;
     int aimSide;
+    bool couldAct;
+    Creature *theOne;
 };
 
 class ModeleSpecial : public ModeleCarte

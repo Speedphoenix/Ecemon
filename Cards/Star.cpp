@@ -21,7 +21,13 @@ Star::~Star()
 
 void Star::StartAction(KeepSpecial& keep, Player& ally, Player& enemy)
 {
-
+    if (ally.GetMain().size()<MAXHAND)
+    {
+        if (ally.GetCimetiere())
+        {
+            ally.GetMain().push_back(ally.PopCimetiere());
+        }
+    }
 }
 
 void Star::EndAction(KeepSpecial& keep, Player& ally, Player& enemy)

@@ -85,12 +85,14 @@ class Player
         /** pour pouvoir acheter une carte de plus et l'ajouter à la collection */
         void Shopping(std::map<int, ModeleCarte *> modeles);
 
+        Carte* PopCimetiere();
         //getters/setters
         Creature* GetActive(int num) { return m_Active[num]; }
         Special* GetSpecial(int num) { return m_Special[num]; }
         Energie* GetEnergie() { return m_Energie.empty()?nullptr:m_Energie.top(); }
         Carte* GetCimetiere() { return m_Cimetiere.empty()?nullptr:m_Cimetiere.top(); }
         Domaines& GetCurrentEnergy() { return m_CurrentEnergy; }
+        std::vector<Carte*>& GetMain() { return m_Main; }
 
         std::string GetNom() { return m_Nom; }
         void SetNom(std::string val) { m_Nom = val; }
@@ -98,7 +100,6 @@ class Player
         void SetCollection(Collection val) { m_Collection = val; }
         std::queue<Carte*> GetDeck() { return m_Deck; }
         void SetDeck(std::queue<Carte*> val) { m_Deck = val; }
-        std::vector<Carte*> GetMain() { return m_Main; }
         Carte* GetEnjeu() { return m_Enjeu; }
         void SetEnjeu(Carte* val) { m_Enjeu = val; }
         Carte* GetExclusive() { return m_Exclusive; }
