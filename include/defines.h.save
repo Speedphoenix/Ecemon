@@ -18,6 +18,11 @@
 
 ///Gameplay/balance
 #define POWFREEZE 1 //nombre de tours que le pow freeze
+#define SHROOMHEAL 2
+#define SHROOMBUFF 2
+#define COINHEAL 3
+
+#define STARTENERGY 
 
 
 ///MAGIC NUMBERS AND ENUMS
@@ -131,19 +136,16 @@ struct Domaines{
 
 
 //positions des differents trucs sur une carte
-#define XACTION 0
-#define YACTION 80
-#define WACTION 84
-#define HACTION 40
+#define XACTION 4
+#define YACTION 60
+#define WACTION 77
+#define HACTION 52
 #define HATTACK (HACTION/2)
 
-#define XDESCRI 0 //L'IMAGE
+#define XDESCRI 4 //L'IMAGE
 #define YDESCRI 12
-#define WDESCRI 84
-#define HDESCRI 68
-
-#define XTHP
-#define XTEXT 37
+#define WDESCRI 76
+#define HDESCRI 48
 
 //pour la fenetre de déscription d'une carte, dans Carte.cpp
 #define XFENETRE 105

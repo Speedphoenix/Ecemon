@@ -21,7 +21,7 @@ int main()
 {
     init_alleg(XSCREEN, YSCREEN); //doit être avant d'utiliser des fonctions d'alleg (create_bitmap par exemple)
 
-    BITMAP *buffer;
+    //BITMAP *buffer;
     Sprites sprites;
     map<int, ModeleCarte *> modeles;
     vector<Player *> playerList;
@@ -32,7 +32,10 @@ int main()
     load_modeles(modeles);
     load_players(playerList, modeles);
 
-    buffer = create_bitmap(XSCREEN, YSCREEN);
+    show_mouse(screen);
+    blit(sprites.fond, screen, 0, 0, 0, 0, XSCREEN, YSCREEN);
+
+    //buffer = create_bitmap(XSCREEN, YSCREEN);
 
     ///fin de l'initialisation du jeu
 
@@ -47,7 +50,9 @@ int main()
             case 1: //nouvelle partie
             if (nouvellePartie(modeles, playerList, players, true))
             {
+                scare_mouse();
                 int gagnant = Game(sprites, p_input, players);
+                unscare_mouse();
 
                 players[0]->Reset();
                 players[1]->Reset();
@@ -66,7 +71,9 @@ int main()
             default: //pour ne pas avoir à rechoisir les decks à chaque fois
             if (nouvellePartie(modeles, playerList, players, false))
             {
+                scare_mouse();
                 int gagnant = Game(sprites, p_input, players);
+                unscare_mouse();
 
                 players[0]->Reset();
                 players[1]->Reset();

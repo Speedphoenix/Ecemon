@@ -155,7 +155,10 @@ void Player::NewGame(bool askChoose)
     m_Enjeu = m_Deck.front();
     m_Deck.pop();
 
-    m_Collection.RemoveCard(m_Enjeu); //l'enjeu n'exeiste que en jeu
+    for (int i=0;i<NBDOMAINE;i++)
+        m_CurrentEnergy.value[i] = STARTENERGY;
+
+    m_Collection.RemoveCard(m_Enjeu); //l'enjeu n'existe que en jeu
 }
 
 Carte *Player::LoseEnjeu()
